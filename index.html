@@ -1,0 +1,972 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #030611;
+      background-image: 
+        radial-gradient(ellipse 65% 55% at 50% 35%, rgba(20, 52, 128, 0.45) 0%, rgba(3, 6, 17, 0.95) 75%),
+        radial-gradient(circle at 15% 15%, rgba(66, 133, 244, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+      color: #e2e8f0;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    aside.gemini-sidebar {
+      width: 68px;
+      background: rgba(4, 8, 20, 0.85);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      flex-shrink: 0;
+    }
+    .sidebar-top, .sidebar-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .gemini-logo-sparkle {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 10px rgba(66, 133, 244, 0.6));
+    }
+    .side-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .side-icon:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+    }
+    .side-icon.active {
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.15);
+    }
+    .user-avatar-pill {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 4px 8px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    main.content-area {
+      flex: 1;
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+
+    header.top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header-titles h1 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-latam {
+      font-size: 10px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #e0f2fe;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    p.header-sub {
+      font-size: 13px;
+      color: #8197b8;
+      margin-top: 2px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-export-report {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(124, 58, 237, 0.25));
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      color: #bfdbfe;
+      padding: 7px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-export-report:hover {
+      background: rgba(59, 130, 246, 0.4);
+      color: #ffffff;
+      border-color: #60a5fa;
+    }
+    .sync-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(13, 23, 44, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #93c5fd;
+    }
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    .prompt-hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin: 4px 0 8px 0;
+    }
+    h2.prompt-title {
+      font-size: 21px;
+      font-weight: 400;
+      color: #f1f5f9;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+    .capsule-search-bar {
+      width: 100%;
+      max-width: 840px;
+      background: rgba(10, 16, 32, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(30, 58, 138, 0.25);
+      transition: all 0.25s ease;
+    }
+    .capsule-search-bar:focus-within {
+      border-color: #60a5fa;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 30px rgba(96, 165, 250, 0.35);
+    }
+    .capsule-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #f8fafc;
+      font-size: 14px;
+    }
+    .capsule-input::placeholder {
+      color: #64748b;
+    }
+    .model-selector-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .quick-chips-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .quick-chip {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 5px 12px;
+      font-size: 11px;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-chip:hover {
+      background: rgba(30, 41, 59, 0.8);
+      color: #e2e8f0;
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+
+    .copilot-response-box {
+      display: none;
+      background: rgba(12, 20, 39, 0.9);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: 18px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.12);
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .copilot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .copilot-header-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .copilot-header-source {
+      font-size: 11px;
+      color: #64748b;
+    }
+    p.copilot-answer {
+      font-size: 13.5px;
+      color: #f1f5f9;
+      line-height: 1.55;
+    }
+    .copilot-metrics-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .metric-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    .metric-lbl {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .competitor-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-item {
+      background: rgba(13, 20, 36, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #8b9bb4;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-item:hover {
+      background: rgba(22, 34, 60, 0.8);
+      color: #f1f5f9;
+    }
+    .tab-item.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(124, 58, 237, 0.25));
+      border-color: rgba(96, 165, 250, 0.6);
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.25);
+    }
+
+    .media-pills-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .media-pill {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #8b9bb4;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .media-pill:hover {
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .media-pill.active {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: #3b82f6;
+      color: #bfdbfe;
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .feed-card {
+      background: rgba(10, 16, 30, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feed-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(96, 165, 250, 0.3);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-top {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge-brand {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .badge-grok { background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-meta { background: rgba(37, 99, 235, 0.2); color: #93c5fd; border: 1px solid rgba(37, 99, 235, 0.3); }
+    .badge-chatgpt { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-copilot { background: rgba(147, 51, 234, 0.2); color: #d8b4fe; border: 1px solid rgba(147, 51, 234, 0.3); }
+    .badge-apple { background: rgba(148, 163, 184, 0.2); color: #f1f5f9; border: 1px solid rgba(148, 163, 184, 0.3); }
+    .badge-perplexity { background: rgba(20, 184, 166, 0.2); color: #5eead4; border: 1px solid rgba(20, 184, 166, 0.3); }
+    .badge-claude { background: rgba(217, 119, 6, 0.2); color: #fcd34d; border: 1px solid rgba(217, 119, 6, 0.3); }
+
+    .card-meta-chips {
+      display: flex;
+      gap: 6px;
+      font-size: 10px;
+      color: #64748b;
+    }
+    .chip-channel {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #94a3b8;
+    }
+
+    .card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    h3.card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f8fafc;
+      line-height: 1.35;
+    }
+    p.card-desc {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .insight-box {
+      background: rgba(3, 7, 18, 0.5);
+      border-left: 2px solid #3b82f6;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .insight-line {
+      color: #cbd5e1;
+    }
+    .insight-line strong {
+      color: #93c5fd;
+    }
+
+    .card-footer {
+      padding: 10px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .card-actions-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-slide-copy {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-slide-copy:hover {
+      border-color: #60a5fa;
+      color: #e0f2fe;
+    }
+    .source-tag {
+      font-size: 11px;
+      color: #64748b;
+    }
+    .action-btn {
+      font-size: 11px;
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .action-btn:hover {
+      text-decoration: underline;
+    }
+
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e3a8a;
+      border: 1px solid #3b82f6;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      animation: fadeIn 0.2s ease;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="gemini-sidebar">
+    <div class="sidebar-top">
+      <div class="gemini-logo-sparkle" title="Google Gemini">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v5)"/>
+          <defs>
+            <linearGradient id="gemini_grad_v5" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#4285F4"/>
+              <stop offset="35%" stop-color="#EA4335"/>
+              <stop offset="70%" stop-color="#FBBC05"/>
+              <stop offset="100%" stop-color="#34A853"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="side-icon active" title="Radar ANACOM">✦</div>
+      <div class="side-icon" title="Métricas">📊</div>
+      <div class="side-icon" title="Canais & Fontes">▦</div>
+      <div class="side-icon" title="Histórico">⏱</div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="side-icon" title="Configurações">⚙</div>
+      <div class="user-avatar-pill">FBiz</div>
+    </div>
+  </aside>
+
+  <main class="content-area">
+
+    <header class="top-header">
+      <div class="header-titles">
+        <h1>Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
+        <p class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-export-report" id="btnExportReport">
+          <span>📥</span> Exportar Resumo p/ Slide
+        </button>
+        <div class="sync-indicator">
+          <span class="dot-pulse"></span>
+          <span>Sincronizado • 7 Rivais</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="prompt-hero-container">
+      <h2 class="prompt-title">Por onde começamos a análise?</h2>
+      
+      <div class="capsule-search-bar">
+        <span style="color:#94a3b8; font-size:18px;">+</span>
+        <input type="text" id="omniInput" class="capsule-input" placeholder="Faça uma pergunta (ex: 'influenciadores', 'frequencia do grok') ou digite termos..." />
+        <div class="model-selector-pill">
+          <span>● ANACOM Copilot</span>
+          <span>▼</span>
+        </div>
+        <span style="color:#94a3b8; font-size:15px;">🎙</span>
+      </div>
+
+      <div class="quick-chips-row">
+        <button class="quick-chip" data-query="com quais influenciadores a categoria trabalhou">🌟 Influenciadores na categoria</button>
+        <button class="quick-chip" data-query="qual a frequencia de posts do grok no instagram">📈 Frequência do Grok no Instagram</button>
+        <button class="quick-chip" data-query="qual foco de meta ai no brasil">💬 Foco da Meta AI no Brasil</button>
+        <button class="quick-chip" data-query="quais os comerciais de tv e video do copilot">📺 Filmes e Comerciais do Copilot</button>
+      </div>
+    </div>
+
+    <section class="copilot-response-box" id="copilotResponse">
+      <div class="copilot-header">
+        <span class="copilot-header-tag">✦ Síntese Estratégica ANACOM</span>
+        <span class="copilot-header-source">Fontes: The Drum, Ad Age, M&M, B9, Meta Ads & Social</span>
+      </div>
+      <p id="copilotText" class="copilot-answer">Analisando base de dados...</p>
+      <div class="copilot-metrics-row" id="copilotMetrics">
+        <div class="metric-item">
+          <span class="metric-val" id="metric1">-</span>
+          <span class="metric-lbl" id="metricLbl1">Volume Detectado</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val" id="metric2">-</span>
+          <span class="metric-lbl" id="metricLbl2">Frequência Média</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val" id="metric3">-</span>
+          <span class="metric-lbl" id="metricLbl3">Território Dominante</span>
+        </div>
+      </div>
+    </section>
+
+    <nav class="competitor-tabs" id="competitorTabs">
+      <button class="tab-item active" data-competitor="all">✦ Todos os Rivais</button>
+      <button class="tab-item" data-competitor="Grok">Grok (xAI)</button>
+      <button class="tab-item" data-competitor="ChatGPT">ChatGPT (OpenAI)</button>
+      <button class="tab-item" data-competitor="Copilot">Microsoft Copilot</button>
+      <button class="tab-item" data-competitor="Meta AI">Meta AI</button>
+      <button class="tab-item" data-competitor="Apple">Apple Intelligence</button>
+      <button class="tab-item" data-competitor="Perplexity">Perplexity AI</button>
+      <button class="tab-item" data-competitor="Claude">Claude (Anthropic)</button>
+    </nav>
+
+    <div class="media-pills-row" id="mediaPills">
+      <button class="media-pill active" data-media="all">Todas as Mídias</button>
+      <button class="media-pill" data-media="Instagram">📸 Instagram</button>
+      <button class="media-pill" data-media="Trade BR">📰 Trade BR (M&M, B9, Propmark)</button>
+      <button class="media-pill" data-media="Global">🌍 The Drum / Ad Age / Adweek</button>
+      <button class="media-pill" data-media="YouTube">▶️ YouTube / TV</button>
+      <button class="media-pill" data-media="Meta Ads">🎯 Meta Ad Library (Anúncios)</button>
+      <button class="media-pill" data-media="𝕏">𝕏 / Social Pulse</button>
+    </div>
+
+    <section class="feed-grid" id="feedGrid">
+
+      <article class="feed-card" data-competitor="Grok" data-media="Instagram" data-text="grok instagram xai posts memes frequencia cadencia geracao de imagem sem censura">
+        <div class="card-top">
+          <span class="badge-brand badge-grok">Grok (xAI)</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">Instagram</span>
+            <span>Há 2 dias</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
+          <p class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Território:</strong> Liberdade Criativa & Sátira</span>
+            <span class="insight-line"><strong>Cadência:</strong> Concentrado em terças e quintas</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">@grok oficial</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="Grok: Geração de Imagem sem Filtro" data-insight="Território: Liberdade Criativa. 14 posts no trimestre.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="https://instagram.com" target="_blank">Ver Post ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card" data-competitor="Meta AI" data-media="Trade BR" data-text="meta ai influenciadores creators brasil whatsapp celebridades b9 meio e mensagem">
+        <div class="card-top">
+          <span class="badge-brand badge-meta">Meta AI</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">Trade BR</span>
+            <span>Há 3 dias</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
+          <p class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Perfil de Creator:</strong> Lifestyle, Maternidade & Culinária</span>
+            <span class="insight-line"><strong>Mote Central:</strong> 'Tirei a dúvida no Zap em 2 segundos'</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">Meio & Mensagem / B9</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="Meta AI: Estratégia de Creators no Brasil" data-insight="Foco em Lifestyle e Culinária no WhatsApp. Sem jargões técnicos.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ler Matéria ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card" data-competitor="Apple" data-media="YouTube" data-text="apple intelligence influenciadores atores celebridades comedia writing tools">
+        <div class="card-top">
+          <span class="badge-brand badge-apple">Apple Intelligence</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">YouTube / TV</span>
+            <span>Há 4 dias</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
+          <p class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Estratégia:</strong> Celebridades Mainstream de Comédia</span>
+            <span class="insight-line"><strong>Território:</strong> Situações Humanas & 'IA para todos'</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">YouTube Oficial Apple</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="Apple Intelligence: Filmes de Sitcom" data-insight="Uso de atores de comédia. Foco em salvar situações cotidianas no iPhone.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="https://youtube.com" target="_blank">Assistir Filme ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card" data-competitor="Copilot" data-media="YouTube" data-text="microsoft copilot influenciadores b2b linkedin creators produtividade super bowl">
+        <div class="card-top">
+          <span class="badge-brand badge-copilot">Microsoft Copilot</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">YouTube / TV</span>
+            <span>Há 5 dias</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
+          <p class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Perfil de Creator:</strong> Executivos, B2B & Top Voices</span>
+            <span class="insight-line"><strong>Mote:</strong> 'An Idea is Just An Idea'</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">The Drum / Ad Age</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="Copilot: Ativações B2B no LinkedIn" data-insight="Foco em produtividade corporativa no Office e Teams.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="https://youtube.com" target="_blank">Assistir Vídeo ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card" data-competitor="Meta AI" data-media="Meta Ads" data-text="meta ai anuncios meta ad library carrossel reels patrocinado">
+        <div class="card-top">
+          <span class="badge-brand badge-meta">Meta AI</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">Meta Ad Library</span>
+            <span>Ativo Agora</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
+          <p class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Formato:</strong> Reels e Carrossel de Conversão</span>
+            <span class="insight-line"><strong>CTA:</strong> 'Experimente agora no WhatsApp'</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">Meta Ad Library</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="Meta AI: Anúncios de Figurinhas no WhatsApp" data-insight="Criativos de alta conversão em Reels e Stories.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ver Anúncio ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feed-card" data-competitor="ChatGPT" data-media="Global" data-text="chatgpt search busca estudantes criadores tech the verge the drum">
+        <div class="card-top">
+          <span class="badge-brand badge-chatgpt">ChatGPT</span>
+          <div class="card-meta-chips">
+            <span class="chip-channel">The Drum / Global</span>
+            <span>Há 1 semana</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
+          <p class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
+          <div class="insight-box">
+            <span class="insight-line"><strong>Target:</strong> Estudantes & Jovens Pesquisadores</span>
+            <span class="insight-line"><strong>Território:</strong> 'Pesquisa sem links azuis poluídos'</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">The Drum / The Verge</span>
+          <div class="card-actions-group">
+            <button class="btn-slide-copy" data-title="ChatGPT: Ataque ao Search para Estudantes" data-insight="Ação voltada a pesquisa acadêmica sem anúncios publicitários.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ler Cobertura ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <div class="toast-notice" id="toast">Copiado para o clipboard com sucesso!</div>
+
+  <script>
+    const appState = {
+      competitor: 'all',
+      media: 'all',
+      search: ''
+    };
+
+    const cards = document.querySelectorAll('.feed-card');
+    const copilotBox = document.getElementById('copilotResponse');
+    const copilotText = document.getElementById('copilotText');
+    const metric1 = document.getElementById('metric1');
+    const metric2 = document.getElementById('metric2');
+    const metric3 = document.getElementById('metric3');
+    const metricLbl1 = document.getElementById('metricLbl1');
+    const metricLbl2 = document.getElementById('metricLbl2');
+    const metricLbl3 = document.getElementById('metricLbl3');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg) {
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2200);
+    }
+
+    const anacomDatabase = [
+      {
+        keys: ['influenciador', 'influenciadores', 'creator', 'creators', 'celebridade', 'parcerias'],
+        answer: 'Na categoria de IA, os concorrentes adotaram estratégias bem distintas de influenciadores:<br>• **Meta AI:** Focou 100% em **micro/macro creators de lifestyle, culinária e rotina familiar** (evitou intencionalmente criadores tech para mostrar facilidade no WhatsApp).<br>• **Microsoft Copilot:** Priorizou **LinkedIn Top Voices, designers e líderes B2B** demonstrando ganho de produtividade no Office.<br>• **Apple Intelligence:** Usou **atores e comediantes renomados** em esquetes de TV.<br>• **ChatGPT:** Focou em creators do **StudyTok e ambiente acadêmico** para o Search.',
+        m1: '4 Abordagens',
+        m2: 'Lifestyle lidera',
+        m3: 'Humor & Cotidiano',
+        lbl1: 'Estratégias Mapeadas',
+        lbl2: 'Perfil mais Ativado',
+        lbl3: 'Tom Geral',
+        filterComp: 'all',
+        filterMedia: 'all'
+      },
+      {
+        keys: ['frequencia', 'cadencia', 'quantos posts', 'grok', 'instagram'],
+        answer: 'Análise de cadência do **Grok no Instagram**:<br>• **Volume Trimestral:** 14 posts oficiais publicados nos últimos 3 meses.<br>• **Frequência Média:** 1,2 posts por semana, com forte concentração às terças e quintas-feiras.<br>• **Pico Recente:** 6 posts na última quinzena, todos com carrosséis visuais destacando geração de imagens sem censura e sátiras pop.',
+        m1: '14 Posts',
+        m2: '1,2 / semana',
+        m3: 'Terças e Quintas',
+        lbl1: 'Volume (3 meses)',
+        lbl2: 'Frequência Média',
+        lbl3: 'Pico de Publicação',
+        filterComp: 'Grok',
+        filterMedia: 'Instagram'
+      },
+      {
+        keys: ['meta', 'brasil', 'whatsapp', 'foco'],
+        answer: 'A comunicação da **Meta AI no Brasil** é 85% focada no **WhatsApp como assistente sem download**. A estratégia elimina discussões sobre parâmetros de modelos e foca em conveniência cotidiana: receitas, figurinhas e dúvidas rápidas em família.',
+        m1: '85%',
+        m2: 'Zero Fricção',
+        m3: 'WhatsApp Nativo',
+        lbl1: 'Foco no Zap',
+        lbl2: 'Argumento Central',
+        lbl3: 'Território Dominante',
+        filterComp: 'Meta AI',
+        filterMedia: 'all'
+      },
+      {
+        keys: ['copilot', 'tv', 'comercial', 'comerciais', 'video', 'filmes'],
+        answer: 'A **Microsoft** colocou no ar **5 grandes campanhas de vídeo para o Copilot** no último período, adaptando versões em espanhol e português para a LATAM. O mote é *"An Idea is Just An Idea"* (transformar ideias soltas em documentos e planilhas reais).',
+        m1: '5 Filmes',
+        m2: 'TV + YouTube',
+        m3: 'Produtividade B2B',
+        lbl1: 'Campanhas de Vídeo',
+        lbl2: 'Canais Chave',
+        lbl3: 'Território Dominante',
+        filterComp: 'Copilot',
+        filterMedia: 'YouTube'
+      }
+    ];
+
+    function parseAndSynthesize(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) {
+        copilotBox.style.display = 'none';
+        return;
+      }
+
+      let match = anacomDatabase.find(item => item.keys.some(k => q.includes(k)));
+
+      if (match) {
+        copilotBox.style.display = 'block';
+        copilotText.innerHTML = match.answer;
+        metric1.innerText = match.m1;
+        metric2.innerText = match.m2;
+        metric3.innerText = match.m3;
+        metricLbl1.innerText = match.lbl1;
+        metricLbl2.innerText = match.lbl2;
+        metricLbl3.innerText = match.lbl3;
+
+        if (match.filterComp && match.filterComp !== 'all') {
+          appState.competitor = match.filterComp;
+          document.querySelectorAll('#competitorTabs .tab-item').forEach(t => {
+            t.classList.toggle('active', t.getAttribute('data-competitor') === match.filterComp);
+          });
+        }
+      } else {
+        copilotBox.style.display = 'block';
+        copilotText.innerHTML = `Identificamos registros relevantes para o termo <strong>"${query}"</strong> na base de inteligência competitiva. Os criativos e peças correspondentes foram filtrados nos cards abaixo para visualização rápida da ficha técnica e canais.`;
+        metric1.innerText = 'Filtro Ativo';
+        metric2.innerText = 'Tempo Real';
+        metric3.innerText = 'Multicanal';
+        metricLbl1.innerText = 'Status';
+        metricLbl2.innerText = 'Base';
+        metricLbl3.innerText = 'Cobertura';
+      }
+    }
+
+    function filterCards() {
+      cards.forEach(card => {
+        const cComp = card.getAttribute('data-competitor');
+        const cMedia = card.getAttribute('data-media');
+        const cText = (card.getAttribute('data-text') + ' ' + card.innerText).toLowerCase();
+
+        const matchComp = (appState.competitor === 'all' || cComp === appState.competitor);
+        const matchMedia = (appState.media === 'all' || cMedia === appState.media);
+        
+        const s = appState.search.toLowerCase().trim();
+        const searchWords = s.split(' ').filter(w => w.length > 2);
+        const matchSearch = (!s || searchWords.some(w => cText.includes(w)) || cText.includes(s));
+
+        if (matchComp && matchMedia && matchSearch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    const omniInput = document.getElementById('omniInput');
+    if (omniInput) {
+      omniInput.addEventListener('input', (e) => {
+        const val = e.target.value;
+        appState.search = val;
+        parseAndSynthesize(val);
+        filterCards();
+      });
+    }
+
+    document.querySelectorAll('.quick-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const query = chip.getAttribute('data-query');
+        if (omniInput) omniInput.value = query;
+        appState.search = query;
+        parseAndSynthesize(query);
+        filterCards();
+      });
+    });
+
+    document.querySelectorAll('#competitorTabs .tab-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        appState.competitor = btn.getAttribute('data-competitor');
+        filterCards();
+      });
+    });
+
+    document.querySelectorAll('#mediaPills .media-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        appState.media = btn.getAttribute('data-media');
+        filterCards();
+      });
+    });
+
+    document.querySelectorAll('.btn-slide-copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const title = btn.getAttribute('data-title');
+        const insight = btn.getAttribute('data-insight');
+        const slideText = `[ANACOM - MOVIMENTAÇÃO CONCORRENTE]\n• Campanha: ${title}\n• Análise: ${insight}\n• Fonte: Google Gemini Competitive Radar`;
+        navigator.clipboard.writeText(slideText).then(() => {
+          showToast('📋 Copiado para colar no Google Slides!');
+        });
+      });
+    });
+
+    const btnExport = document.getElementById('btnExportReport');
+    if (btnExport) {
+      btnExport.addEventListener('click', () => {
+        const report = `=================================================\nRADAR DE CONCORRÊNCIA // GOOGLE GEMINI LATAM\nRelatório Semanal de Análise de Comunicação\n=================================================\n\n1. RESUMO EXECUTIVO:\n• Meta AI segue com maior pressão de hábito diário no Brasil, focando 85% em WhatsApp.\n• Microsoft Copilot lidera investimentos em mídia de TV e B2B no LinkedIn.\n• Grok mantém cadência de 1,2 posts/semana com foco em geração de imagem sem censura.\n• OpenAI foca em parcerias acadêmicas com o ChatGPT Search.\n\n2. RECOMENDAÇÃO ESTRATÉGICA P/ GEMINI:\n• Acelerar comunicação sobre facilidade e integração nativa no Android e Workspace.\n• Explorar creators além do nicho de tecnologia para disputar o território de utilidade da Meta.\n\nGerado automaticamente via Radar Gemini FBiz.`;
+        navigator.clipboard.writeText(report).then(() => {
+          showToast('📥 Resumo executivo copiado para o seu clipboard!');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
