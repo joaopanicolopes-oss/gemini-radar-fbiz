@@ -1,4 +1,4 @@
-<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="4" width="1200" height="800">
+<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="5" width="1200" height="800">
 <head>
   <meta charset="UTF-8">
   <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
@@ -222,7 +222,6 @@
       white-space: nowrap;
     }
 
-    /* Send / Analisar Button */
     .btn-run-analysis {
       background: linear-gradient(135deg, #2563eb, #8b5cf6);
       border: none;
@@ -329,7 +328,7 @@
       color: #94a3b8;
     }
 
-    /* Tabs (Fixed clipping & vertical alignment) */
+    /* Tabs: Fixed Height, Centering, and No-Shrink */
     .competitor-tabs {
       display: flex;
       gap: 8px;
@@ -338,10 +337,12 @@
       align-items: center;
     }
     .tab-item {
-      background: rgba(13, 20, 36, 0.6);
+      background: rgba(13, 20, 36, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
       color: #94a3b8;
-      height: 34px;
+      height: 36px;
+      min-height: 36px;
+      flex-shrink: 0;
       padding: 0 16px;
       border-radius: 100px;
       font-size: 12px;
@@ -352,7 +353,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
+      line-height: normal;
     }
     .tab-item:hover {
       background: rgba(22, 34, 60, 0.85);
@@ -366,7 +367,7 @@
       box-shadow: 0 0 16px rgba(37, 99, 235, 0.25);
     }
 
-    /* Media Filters */
+    /* Media Filters: Fixed Height & No-Shrink */
     .media-pills-row {
       display: flex;
       gap: 8px;
@@ -377,8 +378,10 @@
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.08);
       color: #8b9bb4;
-      height: 30px;
-      padding: 0 12px;
+      height: 32px;
+      min-height: 32px;
+      flex-shrink: 0;
+      padding: 0 14px;
       border-radius: 8px;
       font-size: 11px;
       cursor: pointer;
@@ -386,7 +389,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
+      line-height: normal;
     }
     .media-pill:hover {
       color: #f8fafc;
@@ -630,9 +633,9 @@
     <div class="sidebar-top">
       <div class="gemini-logo-sparkle" id="btnLogoHome" title="Ir para Home / Feed">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v6)"/>
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v7)"/>
           <defs>
-            <linearGradient id="gemini_grad_v6" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gemini_grad_v7" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#4285F4"/>
               <stop offset="35%" stop-color="#EA4335"/>
               <stop offset="70%" stop-color="#FBBC05"/>
@@ -656,8 +659,8 @@
     <!-- Top Header -->
     <header class="top-header">
       <div class="header-titles">
-        <h1 id="v4-header-title">Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
-        <p id="v4-header-sub" class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
+        <h1 id="v5-header-title">Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
+        <p id="v5-header-sub" class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
       </div>
       <div class="header-actions">
         <button class="btn-export-report" id="btnExportReport">
@@ -665,14 +668,14 @@
         </button>
         <div class="sync-indicator">
           <span class="dot-pulse"></span>
-          <span id="v4-sync-label">Sincronizado • 7 Rivais</span>
+          <span id="v5-sync-label">Sincronizado • 7 Rivais</span>
         </div>
       </div>
     </header>
 
     <!-- Gemini Hero Prompt Capsule Area with Action Button -->
     <div class="prompt-hero-container">
-      <h2 id="v4-prompt-title" class="prompt-title">Por onde começamos a análise?</h2>
+      <h2 id="v5-prompt-title" class="prompt-title">Por onde começamos a análise?</h2>
       
       <div class="capsule-search-bar">
         <span style="color:#94a3b8; font-size:18px;">+</span>
@@ -718,7 +721,7 @@
       </div>
     </section>
 
-    <!-- Competitors Tabs -->
+    <!-- Competitors Tabs: Non-collapsible, perfectly aligned -->
     <nav class="competitor-tabs" id="competitorTabs">
       <button class="tab-item active" data-competitor="all">✦ Todos os Rivais</button>
       <button class="tab-item" data-competitor="Grok">Grok (xAI)</button>
@@ -730,7 +733,7 @@
       <button class="tab-item" data-competitor="Claude">Claude (Anthropic)</button>
     </nav>
 
-    <!-- Media Filters -->
+    <!-- Media Filters: Non-collapsible, perfectly aligned -->
     <div class="media-pills-row" id="mediaPills">
       <button class="media-pill active" data-media="all">Todas as Mídias</button>
       <button class="media-pill" data-media="Instagram">📸 Instagram</button>
@@ -754,8 +757,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-grok-1" class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
-          <p id="desc-v4-grok-1" class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
+          <h3 id="c5-title-grok-1" class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
+          <p id="c5-desc-grok-1" class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Território:</strong> Liberdade Criativa & Sátira</span>
             <span class="insight-line"><strong>Cadência:</strong> Concentrado em terças e quintas</span>
@@ -780,8 +783,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-meta-1" class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
-          <p id="desc-v4-meta-1" class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
+          <h3 id="c5-title-meta-1" class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
+          <p id="c5-desc-meta-1" class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Perfil de Creator:</strong> Lifestyle, Maternidade & Culinária</span>
             <span class="insight-line"><strong>Mote Central:</strong> 'Tirei a dúvida no Zap em 2 segundos'</span>
@@ -806,8 +809,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-apple-1" class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
-          <p id="desc-v4-apple-1" class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
+          <h3 id="c5-title-apple-1" class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
+          <p id="c5-desc-apple-1" class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Estratégia:</strong> Celebridades Mainstream de Comédia</span>
             <span class="insight-line"><strong>Território:</strong> Situações Humanas & 'IA para todos'</span>
@@ -832,8 +835,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-copilot-1" class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
-          <p id="desc-v4-copilot-1" class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
+          <h3 id="c5-title-copilot-1" class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
+          <p id="c5-desc-copilot-1" class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Perfil de Creator:</strong> Executivos, B2B & Top Voices</span>
             <span class="insight-line"><strong>Mote:</strong> 'An Idea is Just An Idea'</span>
@@ -858,8 +861,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-meta-2" class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
-          <p id="desc-v4-meta-2" class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
+          <h3 id="c5-title-meta-2" class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
+          <p id="c5-desc-meta-2" class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Formato:</strong> Reels e Carrossel de Conversão</span>
             <span class="insight-line"><strong>CTA:</strong> 'Experimente agora no WhatsApp'</span>
@@ -884,8 +887,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="card-v4-chatgpt-1" class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
-          <p id="desc-v4-chatgpt-1" class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
+          <h3 id="c5-title-chatgpt-1" class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
+          <p id="c5-desc-chatgpt-1" class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Target:</strong> Estudantes & Jovens Pesquisadores</span>
             <span class="insight-line"><strong>Território:</strong> 'Pesquisa sem links azuis poluídos'</span>
@@ -908,7 +911,7 @@
   <div class="metrics-modal-overlay" id="metricsModal">
     <div class="metrics-modal-card">
       <div class="modal-header">
-        <h3 id="modal-heading">📊 Métricas da Categoria (Últimos 90 Dias)</h3>
+        <h3 id="c5-modal-heading">📊 Métricas da Categoria (Últimos 90 Dias)</h3>
         <button class="btn-close-modal" id="btnCloseModal">✕</button>
       </div>
       <div class="metrics-chart-bar-row">
@@ -1094,7 +1097,6 @@
       });
     }
 
-    // Explicit Search Button & Enter Key
     if (btnSubmitSearch) {
       btnSubmitSearch.addEventListener('click', executeAnalysis);
     }
@@ -1106,7 +1108,6 @@
       });
     }
 
-    // Quick chips
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const query = chip.getAttribute('data-query');
@@ -1115,7 +1116,6 @@
       });
     });
 
-    // Competitor tabs
     document.querySelectorAll('#competitorTabs .tab-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.remove('active'));
@@ -1125,7 +1125,6 @@
       });
     });
 
-    // Media pills
     document.querySelectorAll('#mediaPills .media-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.remove('active'));
@@ -1135,7 +1134,6 @@
       });
     });
 
-    // Sidebar navigation buttons
     const btnNavRadar = document.getElementById('btnNavRadar');
     const btnNavMetrics = document.getElementById('btnNavMetrics');
     const btnNavSources = document.getElementById('btnNavSources');
@@ -1191,7 +1189,6 @@
       });
     }
 
-    // Slide Copy
     document.querySelectorAll('.btn-slide-copy').forEach(btn => {
       btn.addEventListener('click', () => {
         const title = btn.getAttribute('data-title');
@@ -1203,7 +1200,6 @@
       });
     });
 
-    // Export Full Report
     const btnExport = document.getElementById('btnExportReport');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
