@@ -1,11 +1,7 @@
-<html lang="pt-BR">
+<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="4" width="1200" height="800">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -26,6 +22,7 @@
       overflow-x: hidden;
     }
 
+    /* Left Sidebar */
     aside.gemini-sidebar {
       width: 68px;
       background: rgba(4, 8, 20, 0.85);
@@ -41,7 +38,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
     .gemini-logo-sparkle {
       width: 32px;
@@ -50,26 +47,31 @@
       align-items: center;
       justify-content: center;
       filter: drop-shadow(0 0 10px rgba(66, 133, 244, 0.6));
+      cursor: pointer;
     }
     .side-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #94a3b8;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
     }
     .side-icon:hover {
       background: rgba(255, 255, 255, 0.06);
       color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.1);
     }
     .side-icon.active {
       color: #60a5fa;
-      background: rgba(59, 130, 246, 0.15);
+      background: rgba(59, 130, 246, 0.18);
+      border-color: rgba(96, 165, 250, 0.4);
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
     }
     .user-avatar-pill {
       background: #1e293b;
@@ -80,6 +82,7 @@
       color: #94a3b8;
     }
 
+    /* Main Area */
     main.content-area {
       flex: 1;
       padding: 24px 32px;
@@ -89,6 +92,7 @@
       overflow-y: auto;
     }
 
+    /* Header */
     header.top-header {
       display: flex;
       justify-content: space-between;
@@ -128,7 +132,7 @@
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(124, 58, 237, 0.25));
       border: 1px solid rgba(96, 165, 250, 0.4);
       color: #bfdbfe;
-      padding: 7px 14px;
+      padding: 8px 16px;
       border-radius: 100px;
       font-size: 12px;
       font-weight: 500;
@@ -162,6 +166,7 @@
       box-shadow: 0 0 8px #38bdf8;
     }
 
+    /* Prompt Area */
     .prompt-hero-container {
       display: flex;
       flex-direction: column;
@@ -177,14 +182,14 @@
     }
     .capsule-search-bar {
       width: 100%;
-      max-width: 840px;
+      max-width: 860px;
       background: rgba(10, 16, 32, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
-      padding: 8px 18px;
+      padding: 6px 8px 6px 18px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(30, 58, 138, 0.25);
       transition: all 0.25s ease;
     }
@@ -199,6 +204,7 @@
       outline: none;
       color: #f8fafc;
       font-size: 14px;
+      padding: 6px 0;
     }
     .capsule-input::placeholder {
       color: #64748b;
@@ -207,7 +213,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 100px;
-      padding: 4px 10px;
+      padding: 5px 10px;
       font-size: 11px;
       color: #93c5fd;
       display: flex;
@@ -216,6 +222,29 @@
       white-space: nowrap;
     }
 
+    /* Send / Analisar Button */
+    .btn-run-analysis {
+      background: linear-gradient(135deg, #2563eb, #8b5cf6);
+      border: none;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+    }
+    .btn-run-analysis:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
+    }
+
+    /* Quick Chips */
     .quick-chips-row {
       display: flex;
       gap: 8px;
@@ -226,7 +255,7 @@
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 100px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       font-size: 11px;
       color: #94a3b8;
       cursor: pointer;
@@ -238,6 +267,7 @@
       border-color: rgba(96, 165, 250, 0.3);
     }
 
+    /* Dynamic Response Box */
     .copilot-response-box {
       display: none;
       background: rgba(12, 20, 39, 0.9);
@@ -299,27 +329,35 @@
       color: #94a3b8;
     }
 
+    /* Tabs (Fixed clipping & vertical alignment) */
     .competitor-tabs {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 4px;
+      align-items: center;
     }
     .tab-item {
       background: rgba(13, 20, 36, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      color: #8b9bb4;
-      padding: 8px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      height: 34px;
+      padding: 0 16px;
       border-radius: 100px;
       font-size: 12px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
     .tab-item:hover {
-      background: rgba(22, 34, 60, 0.8);
+      background: rgba(22, 34, 60, 0.85);
       color: #f1f5f9;
+      border-color: rgba(255, 255, 255, 0.2);
     }
     .tab-item.active {
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(124, 58, 237, 0.25));
@@ -328,6 +366,7 @@
       box-shadow: 0 0 16px rgba(37, 99, 235, 0.25);
     }
 
+    /* Media Filters */
     .media-pills-row {
       display: flex;
       gap: 8px;
@@ -338,11 +377,16 @@
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.08);
       color: #8b9bb4;
-      padding: 5px 12px;
+      height: 30px;
+      padding: 0 12px;
       border-radius: 8px;
       font-size: 11px;
       cursor: pointer;
       transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
     .media-pill:hover {
       color: #f8fafc;
@@ -354,6 +398,7 @@
       color: #bfdbfe;
     }
 
+    /* Cards Grid */
     .feed-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -456,7 +501,7 @@
     }
     .card-actions-group {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
     .btn-slide-copy {
@@ -491,6 +536,76 @@
       text-decoration: underline;
     }
 
+    /* Modal / Metrics Panel */
+    .metrics-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 17, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .metrics-modal-card {
+      background: #0b1120;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+    .modal-header h3 {
+      font-size: 17px;
+      color: #f8fafc;
+      font-weight: 500;
+    }
+    .btn-close-modal {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .metrics-chart-bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .chart-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .chart-label-group {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .bar-bg {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 100px;
+    }
+
     .toast-notice {
       position: fixed;
       bottom: 24px;
@@ -510,13 +625,14 @@
 </head>
 <body>
 
+  <!-- Left Sidebar (Fully Functional) -->
   <aside class="gemini-sidebar">
     <div class="sidebar-top">
-      <div class="gemini-logo-sparkle" title="Google Gemini">
+      <div class="gemini-logo-sparkle" id="btnLogoHome" title="Ir para Home / Feed">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v5)"/>
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v6)"/>
           <defs>
-            <linearGradient id="gemini_grad_v5" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gemini_grad_v6" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#4285F4"/>
               <stop offset="35%" stop-color="#EA4335"/>
               <stop offset="70%" stop-color="#FBBC05"/>
@@ -525,23 +641,23 @@
           </defs>
         </svg>
       </div>
-      <div class="side-icon active" title="Radar ANACOM">✦</div>
-      <div class="side-icon" title="Métricas">📊</div>
-      <div class="side-icon" title="Canais & Fontes">▦</div>
-      <div class="side-icon" title="Histórico">⏱</div>
+      <div class="side-icon active" id="btnNavRadar" title="Radar Principal">✦</div>
+      <div class="side-icon" id="btnNavMetrics" title="Métricas & Share of Voice">📊</div>
+      <div class="side-icon" id="btnNavSources" title="Canais & Fontes Monitoradas">▦</div>
     </div>
     <div class="sidebar-bottom">
-      <div class="side-icon" title="Configurações">⚙</div>
       <div class="user-avatar-pill">FBiz</div>
     </div>
   </aside>
 
+  <!-- Main Content Hub -->
   <main class="content-area">
 
+    <!-- Top Header -->
     <header class="top-header">
       <div class="header-titles">
-        <h1>Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
-        <p class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
+        <h1 id="v4-header-title">Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
+        <p id="v4-header-sub" class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
       </div>
       <div class="header-actions">
         <button class="btn-export-report" id="btnExportReport">
@@ -549,13 +665,14 @@
         </button>
         <div class="sync-indicator">
           <span class="dot-pulse"></span>
-          <span>Sincronizado • 7 Rivais</span>
+          <span id="v4-sync-label">Sincronizado • 7 Rivais</span>
         </div>
       </div>
     </header>
 
+    <!-- Gemini Hero Prompt Capsule Area with Action Button -->
     <div class="prompt-hero-container">
-      <h2 class="prompt-title">Por onde começamos a análise?</h2>
+      <h2 id="v4-prompt-title" class="prompt-title">Por onde começamos a análise?</h2>
       
       <div class="capsule-search-bar">
         <span style="color:#94a3b8; font-size:18px;">+</span>
@@ -564,9 +681,12 @@
           <span>● ANACOM Copilot</span>
           <span>▼</span>
         </div>
-        <span style="color:#94a3b8; font-size:15px;">🎙</span>
+        <button class="btn-run-analysis" id="btnSubmitSearch">
+          <span>✦</span> Analisar ➔
+        </button>
       </div>
 
+      <!-- Quick Analysis Chips -->
       <div class="quick-chips-row">
         <button class="quick-chip" data-query="com quais influenciadores a categoria trabalhou">🌟 Influenciadores na categoria</button>
         <button class="quick-chip" data-query="qual a frequencia de posts do grok no instagram">📈 Frequência do Grok no Instagram</button>
@@ -575,6 +695,7 @@
       </div>
     </div>
 
+    <!-- Dynamic Synthesis Response Box -->
     <section class="copilot-response-box" id="copilotResponse">
       <div class="copilot-header">
         <span class="copilot-header-tag">✦ Síntese Estratégica ANACOM</span>
@@ -597,6 +718,7 @@
       </div>
     </section>
 
+    <!-- Competitors Tabs -->
     <nav class="competitor-tabs" id="competitorTabs">
       <button class="tab-item active" data-competitor="all">✦ Todos os Rivais</button>
       <button class="tab-item" data-competitor="Grok">Grok (xAI)</button>
@@ -608,6 +730,7 @@
       <button class="tab-item" data-competitor="Claude">Claude (Anthropic)</button>
     </nav>
 
+    <!-- Media Filters -->
     <div class="media-pills-row" id="mediaPills">
       <button class="media-pill active" data-media="all">Todas as Mídias</button>
       <button class="media-pill" data-media="Instagram">📸 Instagram</button>
@@ -618,8 +741,10 @@
       <button class="media-pill" data-media="𝕏">𝕏 / Social Pulse</button>
     </div>
 
+    <!-- Cards Feed Grid -->
     <section class="feed-grid" id="feedGrid">
 
+      <!-- Card 1: Grok Instagram -->
       <article class="feed-card" data-competitor="Grok" data-media="Instagram" data-text="grok instagram xai posts memes frequencia cadencia geracao de imagem sem censura">
         <div class="card-top">
           <span class="badge-brand badge-grok">Grok (xAI)</span>
@@ -629,8 +754,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
-          <p class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
+          <h3 id="card-v4-grok-1" class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
+          <p id="desc-v4-grok-1" class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Território:</strong> Liberdade Criativa & Sátira</span>
             <span class="insight-line"><strong>Cadência:</strong> Concentrado em terças e quintas</span>
@@ -645,6 +770,7 @@
         </div>
       </article>
 
+      <!-- Card 2: Meta AI Influenciadores -->
       <article class="feed-card" data-competitor="Meta AI" data-media="Trade BR" data-text="meta ai influenciadores creators brasil whatsapp celebridades b9 meio e mensagem">
         <div class="card-top">
           <span class="badge-brand badge-meta">Meta AI</span>
@@ -654,8 +780,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
-          <p class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
+          <h3 id="card-v4-meta-1" class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
+          <p id="desc-v4-meta-1" class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Perfil de Creator:</strong> Lifestyle, Maternidade & Culinária</span>
             <span class="insight-line"><strong>Mote Central:</strong> 'Tirei a dúvida no Zap em 2 segundos'</span>
@@ -670,6 +796,7 @@
         </div>
       </article>
 
+      <!-- Card 3: Apple Intelligence TV -->
       <article class="feed-card" data-competitor="Apple" data-media="YouTube" data-text="apple intelligence influenciadores atores celebridades comedia writing tools">
         <div class="card-top">
           <span class="badge-brand badge-apple">Apple Intelligence</span>
@@ -679,8 +806,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
-          <p class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
+          <h3 id="card-v4-apple-1" class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
+          <p id="desc-v4-apple-1" class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Estratégia:</strong> Celebridades Mainstream de Comédia</span>
             <span class="insight-line"><strong>Território:</strong> Situações Humanas & 'IA para todos'</span>
@@ -695,6 +822,7 @@
         </div>
       </article>
 
+      <!-- Card 4: Microsoft Copilot B2B -->
       <article class="feed-card" data-competitor="Copilot" data-media="YouTube" data-text="microsoft copilot influenciadores b2b linkedin creators produtividade super bowl">
         <div class="card-top">
           <span class="badge-brand badge-copilot">Microsoft Copilot</span>
@@ -704,8 +832,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
-          <p class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
+          <h3 id="card-v4-copilot-1" class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
+          <p id="desc-v4-copilot-1" class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Perfil de Creator:</strong> Executivos, B2B & Top Voices</span>
             <span class="insight-line"><strong>Mote:</strong> 'An Idea is Just An Idea'</span>
@@ -720,6 +848,7 @@
         </div>
       </article>
 
+      <!-- Card 5: Meta Ad Library Anúncios -->
       <article class="feed-card" data-competitor="Meta AI" data-media="Meta Ads" data-text="meta ai anuncios meta ad library carrossel reels patrocinado">
         <div class="card-top">
           <span class="badge-brand badge-meta">Meta AI</span>
@@ -729,8 +858,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
-          <p class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
+          <h3 id="card-v4-meta-2" class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
+          <p id="desc-v4-meta-2" class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Formato:</strong> Reels e Carrossel de Conversão</span>
             <span class="insight-line"><strong>CTA:</strong> 'Experimente agora no WhatsApp'</span>
@@ -745,6 +874,7 @@
         </div>
       </article>
 
+      <!-- Card 6: ChatGPT Search -->
       <article class="feed-card" data-competitor="ChatGPT" data-media="Global" data-text="chatgpt search busca estudantes criadores tech the verge the drum">
         <div class="card-top">
           <span class="badge-brand badge-chatgpt">ChatGPT</span>
@@ -754,8 +884,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
-          <p class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
+          <h3 id="card-v4-chatgpt-1" class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
+          <p id="desc-v4-chatgpt-1" class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>Target:</strong> Estudantes & Jovens Pesquisadores</span>
             <span class="insight-line"><strong>Território:</strong> 'Pesquisa sem links azuis poluídos'</span>
@@ -773,6 +903,53 @@
     </section>
 
   </main>
+
+  <!-- Metrics Modal -->
+  <div class="metrics-modal-overlay" id="metricsModal">
+    <div class="metrics-modal-card">
+      <div class="modal-header">
+        <h3 id="modal-heading">📊 Métricas da Categoria (Últimos 90 Dias)</h3>
+        <button class="btn-close-modal" id="btnCloseModal">✕</button>
+      </div>
+      <div class="metrics-chart-bar-row">
+        <div class="chart-bar-item">
+          <div class="chart-label-group">
+            <span>Meta AI (WhatsApp / Social / OOH)</span>
+            <strong>38% Share de Mídia</strong>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 38%; background: #3b82f6;"></div></div>
+        </div>
+        <div class="chart-bar-item">
+          <div class="chart-label-group">
+            <span>Microsoft Copilot (TV / YouTube / LinkedIn)</span>
+            <strong>26% Share de Mídia</strong>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 26%; background: #8b5cf6;"></div></div>
+        </div>
+        <div class="chart-bar-item">
+          <div class="chart-label-group">
+            <span>ChatGPT / OpenAI (Search / Acadêmico)</span>
+            <strong>18% Share de Mídia</strong>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 18%; background: #10b981;"></div></div>
+        </div>
+        <div class="chart-bar-item">
+          <div class="chart-label-group">
+            <span>Grok (Instagram Carrosséis / X Real Time)</span>
+            <strong>10% Share de Mídia</strong>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 10%; background: #f43f5e;"></div></div>
+        </div>
+        <div class="chart-bar-item">
+          <div class="chart-label-group">
+            <span>Apple Intelligence / Perplexity / Claude</span>
+            <strong>8% Share de Mídia</strong>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 8%; background: #64748b;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="toast-notice" id="toast">Copiado para o clipboard com sucesso!</div>
 
@@ -793,6 +970,9 @@
     const metricLbl2 = document.getElementById('metricLbl2');
     const metricLbl3 = document.getElementById('metricLbl3');
     const toast = document.getElementById('toast');
+    const omniInput = document.getElementById('omniInput');
+    const btnSubmitSearch = document.getElementById('btnSubmitSearch');
+    const metricsModal = document.getElementById('metricsModal');
 
     function showToast(msg) {
       toast.innerText = msg;
@@ -851,10 +1031,13 @@
       }
     ];
 
-    function parseAndSynthesize(query) {
-      const q = query.toLowerCase().trim();
+    function executeAnalysis() {
+      const q = omniInput.value.toLowerCase().trim();
+      appState.search = q;
+
       if (!q) {
         copilotBox.style.display = 'none';
+        filterCards();
         return;
       }
 
@@ -878,7 +1061,7 @@
         }
       } else {
         copilotBox.style.display = 'block';
-        copilotText.innerHTML = `Identificamos registros relevantes para o termo <strong>"${query}"</strong> na base de inteligência competitiva. Os criativos e peças correspondentes foram filtrados nos cards abaixo para visualização rápida da ficha técnica e canais.`;
+        copilotText.innerHTML = `Identificamos registros relevantes para o termo <strong>"${omniInput.value}"</strong> na base de inteligência competitiva. Os criativos correspondentes foram filtrados nos cards abaixo para visualização rápida da ficha técnica e canais.`;
         metric1.innerText = 'Filtro Ativo';
         metric2.innerText = 'Tempo Real';
         metric3.innerText = 'Multicanal';
@@ -886,6 +1069,8 @@
         metricLbl2.innerText = 'Base';
         metricLbl3.innerText = 'Cobertura';
       }
+
+      filterCards();
     }
 
     function filterCards() {
@@ -909,26 +1094,28 @@
       });
     }
 
-    const omniInput = document.getElementById('omniInput');
+    // Explicit Search Button & Enter Key
+    if (btnSubmitSearch) {
+      btnSubmitSearch.addEventListener('click', executeAnalysis);
+    }
     if (omniInput) {
-      omniInput.addEventListener('input', (e) => {
-        const val = e.target.value;
-        appState.search = val;
-        parseAndSynthesize(val);
-        filterCards();
+      omniInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          executeAnalysis();
+        }
       });
     }
 
+    // Quick chips
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const query = chip.getAttribute('data-query');
         if (omniInput) omniInput.value = query;
-        appState.search = query;
-        parseAndSynthesize(query);
-        filterCards();
+        executeAnalysis();
       });
     });
 
+    // Competitor tabs
     document.querySelectorAll('#competitorTabs .tab-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.remove('active'));
@@ -938,6 +1125,7 @@
       });
     });
 
+    // Media pills
     document.querySelectorAll('#mediaPills .media-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.remove('active'));
@@ -947,6 +1135,63 @@
       });
     });
 
+    // Sidebar navigation buttons
+    const btnNavRadar = document.getElementById('btnNavRadar');
+    const btnNavMetrics = document.getElementById('btnNavMetrics');
+    const btnNavSources = document.getElementById('btnNavSources');
+    const btnLogoHome = document.getElementById('btnLogoHome');
+    const btnCloseModal = document.getElementById('btnCloseModal');
+
+    function resetSidebarActive() {
+      document.querySelectorAll('.gemini-sidebar .side-icon').forEach(i => i.classList.remove('active'));
+    }
+
+    if (btnNavRadar || btnLogoHome) {
+      const goHome = () => {
+        resetSidebarActive();
+        if (btnNavRadar) btnNavRadar.classList.add('active');
+        metricsModal.style.display = 'none';
+        appState.competitor = 'all';
+        appState.media = 'all';
+        appState.search = '';
+        if (omniInput) omniInput.value = '';
+        copilotBox.style.display = 'none';
+        document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.toggle('active', b.getAttribute('data-competitor') === 'all'));
+        document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.toggle('active', b.getAttribute('data-media') === 'all'));
+        filterCards();
+        showToast('✦ Feed principal redefinido');
+      };
+      if (btnNavRadar) btnNavRadar.addEventListener('click', goHome);
+      if (btnLogoHome) btnLogoHome.addEventListener('click', goHome);
+    }
+
+    if (btnNavMetrics) {
+      btnNavMetrics.addEventListener('click', () => {
+        resetSidebarActive();
+        btnNavMetrics.classList.add('active');
+        metricsModal.style.display = 'flex';
+      });
+    }
+
+    if (btnCloseModal) {
+      btnCloseModal.addEventListener('click', () => {
+        metricsModal.style.display = 'none';
+        if (btnNavRadar) {
+          resetSidebarActive();
+          btnNavRadar.classList.add('active');
+        }
+      });
+    }
+
+    if (btnNavSources) {
+      btnNavSources.addEventListener('click', () => {
+        resetSidebarActive();
+        btnNavSources.classList.add('active');
+        showToast('▦ Fontes ativas: The Drum, Ad Age, M&M, B9, Meta Ads, YouTube e X');
+      });
+    }
+
+    // Slide Copy
     document.querySelectorAll('.btn-slide-copy').forEach(btn => {
       btn.addEventListener('click', () => {
         const title = btn.getAttribute('data-title');
@@ -958,6 +1203,7 @@
       });
     });
 
+    // Export Full Report
     const btnExport = document.getElementById('btnExportReport');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
