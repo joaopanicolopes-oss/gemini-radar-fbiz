@@ -1,4 +1,4 @@
-<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="7" width="1200" height="800">
+<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="8" width="1200" height="800">
 <head>
   <meta charset="UTF-8">
   <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
@@ -88,7 +88,7 @@
       padding: 24px 32px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 20px;
       overflow-y: auto;
     }
 
@@ -148,23 +148,23 @@
       border-color: #60a5fa;
     }
 
-    /* Regional Filter */
+    /* Regional Filter for BR, MX, AR, CO */
     .region-pills-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
-      background: rgba(15, 23, 42, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 6px 12px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
       border-radius: 100px;
-      width: fit-content;
+      flex-wrap: wrap;
     }
     .region-btn {
       background: transparent;
       border: none;
       color: #94a3b8;
       font-size: 11px;
-      padding: 4px 10px;
+      padding: 5px 10px;
       border-radius: 100px;
       cursor: pointer;
       transition: all 0.2s;
@@ -184,7 +184,7 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      margin: 4px 0 8px 0;
+      margin: 4px 0 12px 0;
     }
     h2.prompt-title {
       font-size: 21px;
@@ -222,12 +222,11 @@
       color: #64748b;
     }
 
-    /* Interactive Framework Dropdown Selector */
     .framework-dropdown-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
-      padding: 5px 12px;
+      padding: 6px 12px;
       font-size: 11px;
       color: #93c5fd;
       display: flex;
@@ -235,6 +234,7 @@
       gap: 6px;
       white-space: nowrap;
       cursor: pointer;
+      outline: none;
       transition: all 0.2s;
     }
     .framework-dropdown-btn:hover {
@@ -263,7 +263,6 @@
       box-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
     }
 
-    /* Quick Chips */
     .quick-chips-row {
       display: flex;
       gap: 8px;
@@ -348,22 +347,22 @@
       color: #94a3b8;
     }
 
-    /* Competitor Tabs */
+    /* Competitor Tabs: Fixed Height, Wrapped, NO CLIPPING */
     .competitor-tabs {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0 4px 0;
       align-items: center;
     }
     .tab-item {
-      background: rgba(13, 20, 36, 0.65);
+      background: rgba(13, 20, 36, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
       color: #94a3b8;
-      height: 36px;
-      min-height: 36px;
+      height: 38px;
+      min-height: 38px;
       flex-shrink: 0;
-      padding: 0 16px;
+      padding: 0 18px;
       border-radius: 100px;
       font-size: 12px;
       font-weight: 500;
@@ -373,7 +372,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      line-height: normal;
+      box-sizing: border-box;
     }
     .tab-item:hover {
       background: rgba(22, 34, 60, 0.85);
@@ -393,6 +392,7 @@
       gap: 8px;
       flex-wrap: wrap;
       align-items: center;
+      margin-bottom: 8px;
     }
     .media-pill {
       background: transparent;
@@ -409,7 +409,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      line-height: normal;
     }
     .media-pill:hover {
       color: #f8fafc;
@@ -564,7 +563,7 @@
       text-decoration: underline;
     }
 
-    /* Custom Framework Modal */
+    /* Modal */
     .framework-modal-overlay {
       display: none;
       position: fixed;
@@ -658,9 +657,9 @@
     <div class="sidebar-top">
       <div class="gemini-logo-sparkle" id="btnLogoHome" title="Ir para Home / Feed">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v9)"/>
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v10)"/>
           <defs>
-            <linearGradient id="gemini_grad_v9" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gemini_grad_v10" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#4285F4"/>
               <stop offset="35%" stop-color="#EA4335"/>
               <stop offset="70%" stop-color="#FBBC05"/>
@@ -683,15 +682,17 @@
     <!-- Top Header -->
     <header class="top-header">
       <div class="header-titles">
-        <h1 id="v7-header-title">Google Gemini <span class="badge-latam">LATAM // SPRINT ANACOM</span></h1>
-        <p id="v7-header-sub" class="header-sub">Pre-read oficial: ChatGPT, Claude, Meta/Muse, Copilot e Dola (MX)</p>
+        <h1 id="v8-header-title">Google Gemini <span class="badge-latam">LATAM // SPRINT ANACOM</span></h1>
+        <p id="v8-header-sub" class="header-sub">Pre-read oficial: Brasil, México, Argentina e Colômbia</p>
       </div>
       <div class="header-actions">
-        <!-- Country Selector -->
+        <!-- Country Selector for BR, MX, AR, CO -->
         <div class="region-pills-row" id="regionFilters">
           <button class="region-btn active" data-country="all">🌎 Toda LATAM</button>
           <button class="region-btn" data-country="BR">🇧🇷 Brasil</button>
           <button class="region-btn" data-country="MX">🇲🇽 México</button>
+          <button class="region-btn" data-country="AR">🇦🇷 Argentina</button>
+          <button class="region-btn" data-country="CO">🇨🇴 Colômbia</button>
         </div>
 
         <button class="btn-export-report" id="btnExportReport">
@@ -702,13 +703,12 @@
 
     <!-- Prompt Area with Framework Dropdown -->
     <div class="prompt-hero-container">
-      <h2 id="v7-prompt-title" class="prompt-title">Análise Estratégica Concorrencial</h2>
+      <h2 id="v8-prompt-title" class="prompt-title">Análise Estratégica Concorrencial</h2>
       
       <div class="capsule-search-bar">
         <span style="color:#94a3b8; font-size:18px;">+</span>
-        <input type="text" id="omniInput" class="capsule-input" placeholder="Pergunte sobre concorrentes (ex: 'dola mexico', 'meta muse', 'implicacoes')..." />
+        <input type="text" id="omniInput" class="capsule-input" placeholder="Pergunte sobre concorrentes (ex: 'dola mexico', 'argentina', 'colombia')..." />
         
-        <!-- Interactive Framework Selector -->
         <select id="frameworkSelect" class="framework-dropdown-btn">
           <option value="fm1">● Framework 1: Diagnóstico de Sprint</option>
           <option value="fm2">● Framework 2: 4Cs de Comunicação</option>
@@ -725,8 +725,8 @@
       <div class="quick-chips-row">
         <button class="quick-chip" data-query="o que e dola no mexico">🇲🇽 O que é Dola no México?</button>
         <button class="quick-chip" data-query="estrategia de meta muse">🤖 O que é Meta Muse?</button>
+        <button class="quick-chip" data-query="cenario argentina e colombia">🇦🇷 🇨🇴 Cenário Argentina e Colômbia</button>
         <button class="quick-chip" data-query="implicacoes para o gemini">🎯 O que isso implica para o Gemini?</button>
-        <button class="quick-chip" data-query="influenciadores e social na regiao">📱 Influenciadores & Social na LATAM</button>
       </div>
     </div>
 
@@ -753,7 +753,7 @@
       </div>
     </section>
 
-    <!-- Competitors Tabs: 5 Official Rivals from Briefing -->
+    <!-- Competitors Tabs: Wrapped & Never Clipped -->
     <nav class="competitor-tabs" id="competitorTabs">
       <button class="tab-item active" data-competitor="all">✦ Todos os Rivais do Briefing</button>
       <button class="tab-item" data-competitor="Dola">Dola (MX)</button>
@@ -785,8 +785,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c7-title-dola" class="card-title">Fenômeno no México: Agenda e Lembretes via Áudio no WhatsApp</h3>
-          <p id="c7-desc-dola" class="card-desc">Dola viralizou entre PMEs e universitários mexicanos ao permitir marcar compromissos e sincronizar com o Google Calendar enviando apenas mensagens de voz no Zap, sem abrir apps de agenda.</p>
+          <h3 id="c8-title-dola" class="card-title">Fenômeno no México: Agenda e Lembretes via Áudio no WhatsApp</h3>
+          <p id="c8-desc-dola" class="card-desc">Dola viralizou entre PMEs e universitários mexicanos ao permitir marcar compromissos e sincronizar com o Google Calendar enviando apenas mensagens de voz no Zap, sem abrir apps de agenda.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Conquistou o hábito de produtividade dentro do Zap.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Invade o território nativo do Google Assistant/Calendar.</span>
@@ -801,18 +801,18 @@
         </div>
       </article>
 
-      <!-- Card 2: Meta / Muse -->
-      <article class="feed-card" data-competitor="Meta" data-country="BR" data-media="Social & Influx" data-text="meta muse agentic jolly mascote tarefas segundo plano whatsapp instagram brasil">
+      <!-- Card 2: Meta / Muse (Brasil & Colômbia) -->
+      <article class="feed-card" data-competitor="Meta" data-country="BR, CO" data-media="Social & Influx" data-text="meta muse agentic jolly mascote tarefas segundo plano whatsapp instagram brasil colombia">
         <div class="card-top">
           <span class="badge-brand badge-meta">Meta / Muse</span>
           <div class="card-meta-chips">
-            <span class="chip-country">🇧🇷 Brasil / LATAM</span>
+            <span class="chip-country">🇧🇷 Brasil & 🇨🇴 Colômbia</span>
             <span class="chip-channel">Social & Influx</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c7-title-meta" class="card-title">Meta Muse: A Virada da IA 'Passiva' para 'Agentes que Fazem Coisas'</h3>
-          <p id="c7-desc-meta" class="card-desc">Lançamento de Muse com o mascote 'Jolly' e o gadget 'Muse Charm', promovendo uma IA que compra passagens, gerencia e-mails e resolve pendências em segundo plano no WhatsApp e Instagram.</p>
+          <h3 id="c8-title-meta" class="card-title">Meta Muse: A Virada da IA 'Passiva' para 'Agentes que Fazem Coisas'</h3>
+          <p id="c8-desc-meta" class="card-desc">Lançamento de Muse com o mascote 'Jolly' e o gadget 'Muse Charm', promovendo uma IA que compra passagens, gerencia e-mails e resolve pendências em segundo plano no WhatsApp e Instagram.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Mudança de chatbot que conversa para agente executor.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Risco de o usuário delegar tarefas pessoais fora do Google.</span>
@@ -827,18 +827,18 @@
         </div>
       </article>
 
-      <!-- Card 3: ChatGPT Search -->
-      <article class="feed-card" data-competitor="ChatGPT" data-country="BR" data-media="Meios de Massa" data-text="chatgpt search busca google estudantes universitarios tcc studytok brasil">
+      <!-- Card 3: ChatGPT Search (Brasil & Argentina) -->
+      <article class="feed-card" data-competitor="ChatGPT" data-country="BR, AR" data-media="Meios de Massa" data-text="chatgpt search busca google estudantes universitarios tcc studytok brasil argentina">
         <div class="card-top">
           <span class="badge-brand badge-chatgpt">ChatGPT</span>
           <div class="card-meta-chips">
-            <span class="chip-country">🇧🇷 Brasil</span>
+            <span class="chip-country">🇧🇷 Brasil & 🇦🇷 Argentina</span>
             <span class="chip-channel">Meios de Massa</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c7-title-chatgpt" class="card-title">ChatGPT Search: Ataque ao Core Business da Busca no Brasil</h3>
-          <p id="c7-desc-chatgpt" class="card-desc">Campanha digital agressiva posicionando o ChatGPT Search como alternativa à busca tradicional do Google para estudantes e jovens, prometendo respostas limpas sem anúncios.</p>
+          <h3 id="c8-title-chatgpt" class="card-title">ChatGPT Search: Ataque ao Core Business da Busca no Brasil e Argentina</h3>
+          <p id="c8-desc-chatgpt" class="card-desc">Campanha digital agressiva posicionando o ChatGPT Search como alternativa à busca tradicional do Google para estudantes e jovens, prometendo respostas limpas sem anúncios.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Não é mais só gerador de texto; é motor de busca.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Defender a superioridade do Search do Google integrado ao Gemini.</span>
@@ -853,18 +853,18 @@
         </div>
       </article>
 
-      <!-- Card 4: Microsoft Copilot B2B -->
-      <article class="feed-card" data-competitor="Copilot" data-country="MX" data-media="RP & Trade" data-text="microsoft copilot produtividade linkedin office teams b2b mexico brasil">
+      <!-- Card 4: Microsoft Copilot B2B (México, Argentina, Colômbia) -->
+      <article class="feed-card" data-competitor="Copilot" data-country="MX, AR, CO" data-media="RP & Trade" data-text="microsoft copilot produtividade linkedin office teams b2b mexico argentina colombia">
         <div class="card-top">
           <span class="badge-brand badge-copilot">Copilot</span>
           <div class="card-meta-chips">
-            <span class="chip-country">🇲🇽 México / 🇧🇷 Brasil</span>
+            <span class="chip-country">🇲🇽 MX, 🇦🇷 AR, 🇨🇴 CO</span>
             <span class="chip-channel">RP & Trade</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c7-title-copilot" class="card-title">Copilot for Work: Cerco Corporativo no Office e Teams</h3>
-          <p id="c7-desc-copilot" class="card-desc">Comunicação pesada focando em profissionais que usam Excel, Teams e Outlook, mostrando redução de reuniões e criação rápida de apresentações com Top Voices do LinkedIn.</p>
+          <h3 id="c8-title-copilot" class="card-title">Copilot for Work: Cerco Corporativo no Office e Teams</h3>
+          <p id="c8-desc-copilot" class="card-desc">Comunicação pesada focando em profissionais que usam Excel, Teams e Outlook, mostrando redução de reuniões e criação rápida de apresentações com Top Voices do LinkedIn em toda a região andina e México.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Foco absoluto no ambiente de trabalho e ROI corporativo.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Necessidade de destacar o Gemini no Google Workspace.</span>
@@ -879,20 +879,20 @@
         </div>
       </article>
 
-      <!-- Card 5: Claude (Anthropic) -->
-      <article class="feed-card" data-competitor="Claude" data-country="BR" data-media="RP & Trade" data-text="claude anthropic artifacts codigo devs raciocinio seguranca brasil">
+      <!-- Card 5: Claude (Argentina & Colômbia Tech Hubs) -->
+      <article class="feed-card" data-competitor="Claude" data-country="AR, CO, BR" data-media="RP & Trade" data-text="claude anthropic artifacts codigo devs raciocinio argentina colombia tech hub">
         <div class="card-top">
           <span class="badge-brand badge-claude">Claude</span>
           <div class="card-meta-chips">
-            <span class="chip-country">🇧🇷 Brasil</span>
+            <span class="chip-country">🇦🇷 AR & 🇨🇴 CO (Tech Hubs)</span>
             <span class="chip-channel">RP & Trade</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c7-title-claude" class="card-title">Claude 3.5 Sonnet: O Queridinho dos Desenvolvedores e Criadores</h3>
-          <p id="c7-desc-claude" class="card-desc">Com o recurso 'Artifacts', o Claude conquistou a comunidade técnica e criativa na LATAM, sendo apontado em fóruns e no X como o melhor modelo para código e lógica avançada.</p>
+          <h3 id="c8-title-claude" class="card-title">Claude 3.5 Sonnet: Líder em Bogotá, Buenos Aires e SP para Devs</h3>
+          <p id="c8-desc-claude" class="card-desc">Com o recurso 'Artifacts', o Claude conquistou a comunidade técnica e de freelancers de software na Argentina e Colômbia que trabalham remotamente para empresas globais.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>What Changed:</strong> Dominou o share of voice técnico e criativo.</span>
+            <span class="insight-line"><strong>What Changed:</strong> Dominou o share of voice técnico e criativo em hubs tech.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Comunicar o poder de raciocínio profundo e contexto longo do Gemini Pro.</span>
           </div>
         </div>
@@ -909,11 +909,11 @@
 
   </main>
 
-  <!-- Custom Framework Modal -->
+  <!-- Modal -->
   <div class="framework-modal-overlay" id="customFmModal">
     <div class="framework-modal-card">
       <div class="framework-modal-header">
-        <h3 id="c7-fm-modal-title">✏️ Definir Framework Personalizado</h3>
+        <h3 id="c8-fm-modal-title">✏️ Definir Framework Personalizado</h3>
         <button class="btn-close-fm" id="btnCloseFmModal">✕</button>
       </div>
       <p style="font-size: 12px; color: #94a3b8;">Digite os pilares que você quer que o Copilot analise para os concorrentes:</p>
@@ -959,7 +959,6 @@
       setTimeout(() => { toast.style.display = 'none'; }, 2200);
     }
 
-    // Framework definitions
     const frameworks = {
       fm1: '✦ Framework 1: Diagnóstico de Sprint',
       fm2: '✦ Framework 2: 4Cs de Comunicação',
@@ -991,25 +990,25 @@
         filterComp: 'Meta'
       },
       {
+        keys: ['argentina', 'colombia', 'cenario argentina'],
+        answer: '<strong>Cenário na Argentina & Colômbia:</strong><br>• <strong>Argentina (🇦🇷):</strong> Forte apelo de ChatGPT e Copilot como aceleradores de produtividade para freelancers e talentos de tecnologia que trabalham para fora.<br>• <strong>Colômbia (🇨🇴):</strong> Hub de startups em Bogotá e Medellín com forte adoção de Meta AI e bots de WhatsApp para e-commerce local.<br>• <strong>Claude:</strong> Líder indiscutível de reputação técnica em ambos os países para programação.',
+        m1: 'Trabalho & Devs',
+        m2: '🇦🇷 AR & 🇨🇴 CO',
+        m3: 'Produtividade e Freelas',
+        lbl1: 'Pilar Chave',
+        lbl2: 'Região',
+        lbl3: 'Oportunidade Gemini',
+        filterComp: 'all'
+      },
+      {
         keys: ['implicacoes', 'implicacao', 'imply'],
-        answer: '<strong>O que isso implica para o Google Gemini na LATAM:</strong><br>1. <strong>Bloqueio no WhatsApp:</strong> Meta e Dola estão criando o hábito diário de IA no Zap antes do Gemini.<br>2. <strong>Defesa do Search:</strong> ChatGPT Search está tentando fazer a busca tradicional parecer antiquada para universitários.<br>3. <strong>Oportunidade:</strong> Gemini é nativo no Android de bilhões de latinos e no Workspace. A comunicação precisa destacar utilidade real no dia a dia.',
+        answer: '<strong>O que isso implica para o Google Gemini na LATAM:</strong><br>1. <strong>Bloqueio no WhatsApp:</strong> Meta e Dola estão criando o hábito diário de IA no Zap antes do Gemini.<br>2. <strong>Defesa do Search:</strong> ChatGPT Search está tentando fazer a busca tradicional parecer antiquada para universitários no Brasil e Argentina.<br>3. <strong>Oportunidade:</strong> Gemini é nativo no Android de bilhões de latinos e no Workspace. A comunicação precisa destacar utilidade real no dia a dia.',
         m1: '3 Implicações Centrais',
         m2: 'LATAM Geral',
         m3: 'Acelerar Utilidade Diária',
         lbl1: 'Síntese',
         lbl2: 'Escopo',
         lbl3: 'Prioridade',
-        filterComp: 'all'
-      },
-      {
-        keys: ['influenciador', 'influenciadores', 'social', 'influx'],
-        answer: '<strong>Cenário de Influenciadores e Social na Região:</strong><br>• <strong>Meta:</strong> Focou 100% em creators de culinária e maternidade no Brasil e México para normalizar o uso no WhatsApp.<br>• <strong>Copilot:</strong> Foco em Top Voices corporativos no LinkedIn.<br>• <strong>ChatGPT:</strong> Parcerias com creators acadêmicos e StudyTok.<br>• <strong>Dola MX:</strong> TikTokers de rotina e PMEs demonstrando agendamento por áudio.',
-        m1: 'Creators Lifestyle',
-        m2: 'Brasil & México',
-        m3: 'Humanizar Uso Prático',
-        lbl1: 'Perfil Mais Ativo',
-        lbl2: 'Foco Geográfico',
-        lbl3: 'Recomendação Gemini',
         filterComp: 'all'
       }
     ];
@@ -1049,7 +1048,7 @@
         let customNotice = appState.customFrameworkText ? `<br><br><strong>Estrutura Aplicada:</strong><br>${appState.customFrameworkText.replace(/\n/g, '<br>')}` : '';
         copilotText.innerHTML = `Analisando registros sob o <strong>${frameworks[appState.framework]}</strong> para "${omniInput.value}". Os criativos correspondentes foram filtrados nos cards abaixo.${customNotice}`;
         metric1.innerText = 'Filtro Ativo';
-        metric2.innerText = 'LATAM';
+        metric2.innerText = 'LATAM (BR, MX, AR, CO)';
         metric3.innerText = 'Pre-read Sprint';
         metricLbl1.innerText = 'Status';
         metricLbl2.innerText = 'Escopo';
@@ -1082,7 +1081,6 @@
       });
     }
 
-    // Framework dropdown change
     if (frameworkSelect) {
       frameworkSelect.addEventListener('change', (e) => {
         const val = e.target.value;
@@ -1096,7 +1094,6 @@
       });
     }
 
-    // Custom Framework modal events
     if (btnCloseFmModal) {
       btnCloseFmModal.addEventListener('click', () => {
         customFmModal.style.display = 'none';
@@ -1122,7 +1119,6 @@
       });
     }
 
-    // Quick chips
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const query = chip.getAttribute('data-query');
@@ -1131,7 +1127,6 @@
       });
     });
 
-    // Competitor tabs
     document.querySelectorAll('#competitorTabs .tab-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.remove('active'));
@@ -1141,7 +1136,6 @@
       });
     });
 
-    // Media pills
     document.querySelectorAll('#mediaPills .media-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.remove('active'));
@@ -1151,7 +1145,6 @@
       });
     });
 
-    // Country pills
     document.querySelectorAll('#regionFilters .region-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#regionFilters .region-btn').forEach(b => b.classList.remove('active'));
@@ -1161,7 +1154,6 @@
       });
     });
 
-    // Slide copy
     document.querySelectorAll('.btn-slide-copy').forEach(btn => {
       btn.addEventListener('click', () => {
         const title = btn.getAttribute('data-title');
@@ -1173,11 +1165,10 @@
       });
     });
 
-    // Export Full Presentation Structure
     const btnExport = document.getElementById('btnExportReport');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
-        const structure = `==========================================================\nGOOGLE GEMINI SPRINT // LATAM COMPETITIVE PRE-READ\nFramework: Previous Mapping | What Changed | Implications\n==========================================================\n\n1. PREVIOUS MAPPING:\n• ChatGPT: Brand awareness leader & generic category name.\n• Claude: Technical niche for coding and deep research.\n• Meta AI: Everyday presence embedded in WhatsApp.\n• Copilot: Dominant in enterprise/workplace.\n• Dola (MX): Viral WhatsApp calendar assistant in Mexico.\n\n2. WHAT HAS CHANGED:\n• Meta launched Muse: Shift from chatbots to agentic task execution.\n• ChatGPT Search attacking Google core search with students.\n• Dola proved Latam users prefer voice notes over calendar apps.\n• Claude gained dev community mindshare with Artifacts.\n\n3. WHAT DOES IT IMPLY FOR GEMINI:\n• Defend WhatsApp / Mobile habit with native Android integration.\n• Protect Google Workspace & Calendar utility.\n• Win the Search war by proving Gemini is real-time and grounded.\n\n4. NOTABLE EXECUTIONS PER COUNTRY:\n• BR: Meta mass lifestyle creator campaign for WhatsApp.\n• MX: Dola viral TikTok & WhatsApp audio scheduling.\n\n5. OPPORTUNITIES & THREATS:\n• Threat: WhatsApp habit lock-in.\n• Opportunity: Android default reach & multimodal camera utility.`;
+        const structure = `==========================================================\nGOOGLE GEMINI SPRINT // LATAM COMPETITIVE PRE-READ\nMarkets: Brasil, México, Argentina e Colômbia\nFramework: Previous Mapping | What Changed | Implications\n==========================================================\n\n1. PREVIOUS MAPPING:\n• ChatGPT: Brand awareness leader & generic category name.\n• Claude: Technical niche for coding and deep research.\n• Meta AI: Everyday presence embedded in WhatsApp.\n• Copilot: Dominant in enterprise/workplace.\n• Dola (MX): Viral WhatsApp calendar assistant in Mexico.\n\n2. WHAT HAS CHANGED:\n• Meta launched Muse: Shift from chatbots to agentic task execution.\n• ChatGPT Search attacking Google core search with students.\n• Dola proved Latam users prefer voice notes over calendar apps.\n• Claude gained dev community mindshare with Artifacts.\n\n3. WHAT DOES IT IMPLY FOR GEMINI:\n• Defend WhatsApp / Mobile habit with native Android integration.\n• Protect Google Workspace & Calendar utility.\n• Win the Search war by proving Gemini is real-time and grounded.\n\n4. NOTABLE EXECUTIONS PER COUNTRY:\n• BR: Meta mass lifestyle creator campaign for WhatsApp.\n• MX: Dola viral TikTok & WhatsApp audio scheduling.\n• AR: ChatGPT & Copilot for tech freelancers and remote work.\n• CO: Meta WhatsApp bots for commerce & customer service.\n\n5. OPPORTUNITIES & THREATS:\n• Threat: WhatsApp habit lock-in across all 4 countries.\n• Opportunity: Android default reach & multimodal camera utility.`;
         navigator.clipboard.writeText(structure).then(() => {
           showToast('📥 Estrutura completa copiada para o Google Slides!');
         });
