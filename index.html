@@ -1,4 +1,4 @@
-<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="8" width="1200" height="800">
+<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="9" width="1200" height="800">
 <head>
   <meta charset="UTF-8">
   <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
@@ -284,15 +284,21 @@
       color: #e2e8f0;
       border-color: rgba(96, 165, 250, 0.3);
     }
+    .quick-chip.chip-highlight {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+      border-color: #60a5fa;
+      color: #e0f2fe;
+      font-weight: 600;
+    }
 
     /* Dynamic Response Box */
     .copilot-response-box {
       display: none;
-      background: rgba(12, 20, 39, 0.9);
+      background: rgba(12, 20, 39, 0.95);
       border: 1px solid rgba(96, 165, 250, 0.4);
       backdrop-filter: blur(16px);
       border-radius: 16px;
-      padding: 18px 22px;
+      padding: 22px 24px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(59, 130, 246, 0.12);
       animation: fadeIn 0.25s ease;
     }
@@ -304,10 +310,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
     }
     .copilot-header-tag {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       color: #93c5fd;
       text-transform: uppercase;
@@ -316,15 +324,53 @@
       align-items: center;
       gap: 6px;
     }
-    .copilot-header-source {
+    .btn-copy-full-anacom {
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid #3b82f6;
+      color: #bfdbfe;
+      padding: 5px 12px;
+      border-radius: 100px;
       font-size: 11px;
-      color: #64748b;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
     }
-    p.copilot-answer {
+    .btn-copy-full-anacom:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .anacom-report-content {
       font-size: 13.5px;
       color: #f1f5f9;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .anacom-section-block {
+      background: rgba(3, 7, 18, 0.4);
+      border-left: 3px solid #3b82f6;
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+    .anacom-section-block h4 {
+      font-size: 13px;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .anacom-section-block p, .anacom-section-block ul {
+      font-size: 12.5px;
+      color: #cbd5e1;
       line-height: 1.55;
     }
+    .anacom-section-block ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
     .copilot-metrics-row {
       display: flex;
       gap: 20px;
@@ -347,7 +393,7 @@
       color: #94a3b8;
     }
 
-    /* Competitor Tabs: Fixed Height, Wrapped, NO CLIPPING */
+    /* Competitor Tabs */
     .competitor-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -657,9 +703,9 @@
     <div class="sidebar-top">
       <div class="gemini-logo-sparkle" id="btnLogoHome" title="Ir para Home / Feed">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v10)"/>
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v11)"/>
           <defs>
-            <linearGradient id="gemini_grad_v10" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gemini_grad_v11" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#4285F4"/>
               <stop offset="35%" stop-color="#EA4335"/>
               <stop offset="70%" stop-color="#FBBC05"/>
@@ -682,8 +728,8 @@
     <!-- Top Header -->
     <header class="top-header">
       <div class="header-titles">
-        <h1 id="v8-header-title">Google Gemini <span class="badge-latam">LATAM // SPRINT ANACOM</span></h1>
-        <p id="v8-header-sub" class="header-sub">Pre-read oficial: Brasil, México, Argentina e Colômbia</p>
+        <h1 id="v9-header-title">Google Gemini <span class="badge-latam">LATAM // SPRINT ANACOM</span></h1>
+        <p id="v9-header-sub" class="header-sub">Pre-read oficial: Brasil, México, Argentina e Colômbia</p>
       </div>
       <div class="header-actions">
         <!-- Country Selector for BR, MX, AR, CO -->
@@ -703,11 +749,11 @@
 
     <!-- Prompt Area with Framework Dropdown -->
     <div class="prompt-hero-container">
-      <h2 id="v8-prompt-title" class="prompt-title">Análise Estratégica Concorrencial</h2>
+      <h2 id="v9-prompt-title" class="prompt-title">Análise Estratégica Concorrencial</h2>
       
       <div class="capsule-search-bar">
         <span style="color:#94a3b8; font-size:18px;">+</span>
-        <input type="text" id="omniInput" class="capsule-input" placeholder="Pergunte sobre concorrentes (ex: 'dola mexico', 'argentina', 'colombia')..." />
+        <input type="text" id="omniInput" class="capsule-input" placeholder="Digite 'anacom completa' ou pergunte sobre rivais (ex: 'dola mexico', 'meta muse')..." />
         
         <select id="frameworkSelect" class="framework-dropdown-btn">
           <option value="fm1">● Framework 1: Diagnóstico de Sprint</option>
@@ -723,20 +769,20 @@
 
       <!-- Quick Analysis Chips -->
       <div class="quick-chips-row">
+        <button class="quick-chip chip-highlight" data-query="anacom completa">⚡ Gerar ANACOM Completa do Sprint</button>
         <button class="quick-chip" data-query="o que e dola no mexico">🇲🇽 O que é Dola no México?</button>
         <button class="quick-chip" data-query="estrategia de meta muse">🤖 O que é Meta Muse?</button>
-        <button class="quick-chip" data-query="cenario argentina e colombia">🇦🇷 🇨🇴 Cenário Argentina e Colômbia</button>
-        <button class="quick-chip" data-query="implicacoes para o gemini">🎯 O que isso implica para o Gemini?</button>
+        <button class="quick-chip" data-query="cenario argentina e colombia">🇦🇷 🇨🇴 Argentina & Colômbia</button>
       </div>
     </div>
 
-    <!-- Dynamic Synthesis Response Box -->
+    <!-- Dynamic Synthesis Response Box (Capable of Full ANACOM Dossier) -->
     <section class="copilot-response-box" id="copilotResponse">
       <div class="copilot-header">
-        <span class="copilot-header-tag" id="currentFmTitle">✦ Framework 1: Diagnóstico de Sprint</span>
-        <span class="copilot-header-source">Pre-read pronto para Google Slides</span>
+        <span class="copilot-header-tag" id="currentFmTitle">✦ Dossiê Estratégico ANACOM (Sprint Google Gemini)</span>
+        <button class="btn-copy-full-anacom" id="btnCopyDossier">📋 Copiar ANACOM Completa</button>
       </div>
-      <p id="copilotText" class="copilot-answer">Analisando base de dados...</p>
+      <div id="copilotReportArea" class="anacom-report-content"></div>
       <div class="copilot-metrics-row" id="copilotMetrics">
         <div class="metric-item">
           <span class="metric-val" id="metric1">-</span>
@@ -753,7 +799,7 @@
       </div>
     </section>
 
-    <!-- Competitors Tabs: Wrapped & Never Clipped -->
+    <!-- Competitors Tabs: Wrapped & Clean -->
     <nav class="competitor-tabs" id="competitorTabs">
       <button class="tab-item active" data-competitor="all">✦ Todos os Rivais do Briefing</button>
       <button class="tab-item" data-competitor="Dola">Dola (MX)</button>
@@ -785,8 +831,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c8-title-dola" class="card-title">Fenômeno no México: Agenda e Lembretes via Áudio no WhatsApp</h3>
-          <p id="c8-desc-dola" class="card-desc">Dola viralizou entre PMEs e universitários mexicanos ao permitir marcar compromissos e sincronizar com o Google Calendar enviando apenas mensagens de voz no Zap, sem abrir apps de agenda.</p>
+          <h3 id="c9-title-dola" class="card-title">Fenômeno no México: Agenda e Lembretes via Áudio no WhatsApp</h3>
+          <p id="c9-desc-dola" class="card-desc">Dola viralizou entre PMEs e universitários mexicanos ao permitir marcar compromissos e sincronizar com o Google Calendar enviando apenas mensagens de voz no Zap, sem abrir apps de agenda.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Conquistou o hábito de produtividade dentro do Zap.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Invade o território nativo do Google Assistant/Calendar.</span>
@@ -811,8 +857,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c8-title-meta" class="card-title">Meta Muse: A Virada da IA 'Passiva' para 'Agentes que Fazem Coisas'</h3>
-          <p id="c8-desc-meta" class="card-desc">Lançamento de Muse com o mascote 'Jolly' e o gadget 'Muse Charm', promovendo uma IA que compra passagens, gerencia e-mails e resolve pendências em segundo plano no WhatsApp e Instagram.</p>
+          <h3 id="c9-title-meta" class="card-title">Meta Muse: A Virada da IA 'Passiva' para 'Agentes que Fazem Coisas'</h3>
+          <p id="c9-desc-meta" class="card-desc">Lançamento de Muse com o mascote 'Jolly' e o gadget 'Muse Charm', promovendo uma IA que compra passagens, gerencia e-mails e resolve pendências em segundo plano no WhatsApp e Instagram.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Mudança de chatbot que conversa para agente executor.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Risco de o usuário delegar tarefas pessoais fora do Google.</span>
@@ -837,8 +883,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c8-title-chatgpt" class="card-title">ChatGPT Search: Ataque ao Core Business da Busca no Brasil e Argentina</h3>
-          <p id="c8-desc-chatgpt" class="card-desc">Campanha digital agressiva posicionando o ChatGPT Search como alternativa à busca tradicional do Google para estudantes e jovens, prometendo respostas limpas sem anúncios.</p>
+          <h3 id="c9-title-chatgpt" class="card-title">ChatGPT Search: Ataque ao Core Business da Busca no Brasil e Argentina</h3>
+          <p id="c9-desc-chatgpt" class="card-desc">Campanha digital agressiva posicionando o ChatGPT Search como alternativa à busca tradicional do Google para estudantes e jovens, prometendo respostas limpas sem anúncios.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Não é mais só gerador de texto; é motor de busca.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Defender a superioridade do Search do Google integrado ao Gemini.</span>
@@ -863,8 +909,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c8-title-copilot" class="card-title">Copilot for Work: Cerco Corporativo no Office e Teams</h3>
-          <p id="c8-desc-copilot" class="card-desc">Comunicação pesada focando em profissionais que usam Excel, Teams e Outlook, mostrando redução de reuniões e criação rápida de apresentações com Top Voices do LinkedIn em toda a região andina e México.</p>
+          <h3 id="c9-title-copilot" class="card-title">Copilot for Work: Cerco Corporativo no Office e Teams</h3>
+          <p id="c9-desc-copilot" class="card-desc">Comunicação pesada focando em profissionais que usam Excel, Teams e Outlook, mostrando redução de reuniões e criação rápida de apresentações com Top Voices do LinkedIn em toda a região andina e México.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Foco absoluto no ambiente de trabalho e ROI corporativo.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Necessidade de destacar o Gemini no Google Workspace.</span>
@@ -889,8 +935,8 @@
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c8-title-claude" class="card-title">Claude 3.5 Sonnet: Líder em Bogotá, Buenos Aires e SP para Devs</h3>
-          <p id="c8-desc-claude" class="card-desc">Com o recurso 'Artifacts', o Claude conquistou a comunidade técnica e de freelancers de software na Argentina e Colômbia que trabalham remotamente para empresas globais.</p>
+          <h3 id="c9-title-claude" class="card-title">Claude 3.5 Sonnet: Líder em Bogotá, Buenos Aires e SP para Devs</h3>
+          <p id="c9-desc-claude" class="card-desc">Com o recurso 'Artifacts', o Claude conquistou a comunidade técnica e de freelancers de software na Argentina e Colômbia que trabalham remotamente para empresas globais.</p>
           <div class="insight-box">
             <span class="insight-line"><strong>What Changed:</strong> Dominou o share of voice técnico e criativo em hubs tech.</span>
             <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Comunicar o poder de raciocínio profundo e contexto longo do Gemini Pro.</span>
@@ -913,7 +959,7 @@
   <div class="framework-modal-overlay" id="customFmModal">
     <div class="framework-modal-card">
       <div class="framework-modal-header">
-        <h3 id="c8-fm-modal-title">✏️ Definir Framework Personalizado</h3>
+        <h3 id="c9-fm-modal-title">✏️ Definir Framework Personalizado</h3>
         <button class="btn-close-fm" id="btnCloseFmModal">✕</button>
       </div>
       <p style="font-size: 12px; color: #94a3b8;">Digite os pilares que você quer que o Copilot analise para os concorrentes:</p>
@@ -936,7 +982,7 @@
 
     const cards = document.querySelectorAll('.feed-card');
     const copilotBox = document.getElementById('copilotResponse');
-    const copilotText = document.getElementById('copilotText');
+    const copilotReportArea = document.getElementById('copilotReportArea');
     const metric1 = document.getElementById('metric1');
     const metric2 = document.getElementById('metric2');
     const metric3 = document.getElementById('metric3');
@@ -952,6 +998,7 @@
     const btnCloseFmModal = document.getElementById('btnCloseFmModal');
     const btnSaveCustomFm = document.getElementById('btnSaveCustomFm');
     const customFmInput = document.getElementById('customFmInput');
+    const btnCopyDossier = document.getElementById('btnCopyDossier');
 
     function showToast(msg) {
       toast.innerText = msg;
@@ -966,52 +1013,107 @@
       custom: '✦ Framework Personalizado'
     };
 
-    const sprintDatabase = [
-      {
-        keys: ['dola', 'mexico'],
-        answer: '<strong>Dola no México (Ameaça Crítica):</strong><br>• <strong>O que é:</strong> Bot de WhatsApp que virou febre no México para organizar agendas e lembretes apenas enviando áudios em espanhol.<br>• <strong>Impacto:</strong> O usuário sincroniza com o Google Calendar sem nunca abrir o app do Google.<br>• <strong>Implicação p/ Gemini:</strong> Provar que o Gemini no celular organiza a vida com a mesma facilidade via voz no Android.',
-        m1: 'Agenda no WhatsApp',
-        m2: '🇲🇽 México',
-        m3: 'Foco em Voz no Zap',
-        lbl1: 'Pilar',
-        lbl2: 'País',
-        lbl3: 'Ponto de Atenção',
-        filterComp: 'Dola'
-      },
-      {
-        keys: ['meta', 'muse'],
-        answer: '<strong>Meta / Muse (A Transição para Agentes):</strong><br>• <strong>O que é:</strong> O agente da Meta lançado para executar tarefas em segundo plano (reservas, compras e e-mails) no WhatsApp e Instagram com o mascote Jolly.<br>• <strong>Implicação p/ Gemini:</strong> Meta está passando da IA que "fala" para a IA que "faz". Gemini precisa acelerar a narrativa de integração prática no ecossistema Google.',
-        m1: 'Agentes Autônomos',
-        m2: '🇧🇷 Brasil & LATAM',
-        m3: 'Automação no Zap',
-        lbl1: 'Pilar',
-        lbl2: 'Região',
-        lbl3: 'Ponto de Atenção',
-        filterComp: 'Meta'
-      },
-      {
-        keys: ['argentina', 'colombia', 'cenario argentina'],
-        answer: '<strong>Cenário na Argentina & Colômbia:</strong><br>• <strong>Argentina (🇦🇷):</strong> Forte apelo de ChatGPT e Copilot como aceleradores de produtividade para freelancers e talentos de tecnologia que trabalham para fora.<br>• <strong>Colômbia (🇨🇴):</strong> Hub de startups em Bogotá e Medellín com forte adoção de Meta AI e bots de WhatsApp para e-commerce local.<br>• <strong>Claude:</strong> Líder indiscutível de reputação técnica em ambos os países para programação.',
-        m1: 'Trabalho & Devs',
-        m2: '🇦🇷 AR & 🇨🇴 CO',
-        m3: 'Produtividade e Freelas',
-        lbl1: 'Pilar Chave',
-        lbl2: 'Região',
-        lbl3: 'Oportunidade Gemini',
-        filterComp: 'all'
-      },
-      {
-        keys: ['implicacoes', 'implicacao', 'imply'],
-        answer: '<strong>O que isso implica para o Google Gemini na LATAM:</strong><br>1. <strong>Bloqueio no WhatsApp:</strong> Meta e Dola estão criando o hábito diário de IA no Zap antes do Gemini.<br>2. <strong>Defesa do Search:</strong> ChatGPT Search está tentando fazer a busca tradicional parecer antiquada para universitários no Brasil e Argentina.<br>3. <strong>Oportunidade:</strong> Gemini é nativo no Android de bilhões de latinos e no Workspace. A comunicação precisa destacar utilidade real no dia a dia.',
-        m1: '3 Implicações Centrais',
-        m2: 'LATAM Geral',
-        m3: 'Acelerar Utilidade Diária',
-        lbl1: 'Síntese',
-        lbl2: 'Escopo',
-        lbl3: 'Prioridade',
-        filterComp: 'all'
-      }
-    ];
+    // Full Comprehensive ANACOM Report HTML
+    const fullAnacomHtml = `
+      <div class="anacom-section-block">
+        <h4>1. Previous Mapping (Onde cada concorrente estava posicionado)</h4>
+        <ul>
+          <li><strong>ChatGPT:</strong> Dono absoluto do awareness popular e sinônimo de categoria ("dar um chat"). Foco em curiosidade e uso casual.</li>
+          <li><strong>Claude (Anthropic):</strong> Niche técnico de desenvolvedores e código limpo, reconhecido por raciocínio lógico e ética.</li>
+          <li><strong>Meta AI:</strong> Foco em conveniência zero fricção ("já está no seu WhatsApp"), sem exigir download ou login.</li>
+          <li><strong>Microsoft Copilot:</strong> Dominante na produtividade de escritório, ancorado no Windows, Office e Teams.</li>
+          <li><strong>Dola (MX):</strong> Utilitário prático de calendário por mensagem de voz no México.</li>
+        </ul>
+      </div>
+
+      <div class="anacom-section-block">
+        <h4>2. What Has Changed Since Then? (Grandes Viradas Recentes)</h4>
+        <ul>
+          <li><strong>De Chat para Ação (Meta / Muse):</strong> Lançamento do Muse com mascote Jolly, executando tarefas e compras em segundo plano no WhatsApp e Instagram.</li>
+          <li><strong>Ataque Frontal ao Search (ChatGPT):</strong> A OpenAI começou a promover o ChatGPT Search contra o Google, mirando universitários e jovens no Brasil e Argentina.</li>
+          <li><strong>A Força do Áudio no Zap (Dola MX):</strong> Provou na América Latina que mandar mensagem de voz no WhatsApp supera o uso de aplicativos de calendário formais.</li>
+          <li><strong>Comunidade Técnica Conquistada (Claude Artifacts):</strong> Dominou a preferência dos desenvolvedores e criadores de produtos digitais na região.</li>
+        </ul>
+      </div>
+
+      <div class="anacom-section-block">
+        <h4>3. What Does It Imply For Us? (Implicações para Google Gemini LATAM)</h4>
+        <ul>
+          <li><strong>Risco de Bloqueio de Hábito no WhatsApp:</strong> Meta AI e Dola criam frequência diária no Zap antes que o usuário sinta falta do Gemini.</li>
+          <li><strong>Defesa do Core de Busca:</strong> O Gemini precisa comunicar com urgência que une IA profunda com a confiabilidade e atualização em tempo real do Google Search.</li>
+          <li><strong>Ativação do Ecossistema Android:</strong> A presença nativa de fábrica em bilhões de aparelhos na LATAM é nossa maior vantagem; precisa ser comunicada como benefício prático e imediato.</li>
+        </ul>
+      </div>
+
+      <div class="anacom-section-block">
+        <h4>4. Specific Notable Executions - Per Country (Brasil, México, Argentina, Colômbia)</h4>
+        <ul>
+          <li><strong>🇧🇷 Brasil:</strong> Meta AI ativou mais de 25 creators de culinária e maternidade para normalizar o uso no WhatsApp. Copilot investiu em OOH e LinkedIn Top Voices.</li>
+          <li><strong>🇲🇽 México:</strong> Dola viralizou com campanhas de áudio no TikTok; Meta foca em comércio e respostas no WhatsApp Business.</li>
+          <li><strong>🇦🇷 Argentina:</strong> Alta penetração de ChatGPT e Copilot como ferramentas essenciais para freelancers de tecnologia e trabalho remoto em dólar.</li>
+          <li><strong>🇨🇴 Colômbia:</strong> Hubs de startups em Bogotá e Medellín com forte adoção de Meta WhatsApp para atendimento e Claude para código.</li>
+        </ul>
+      </div>
+
+      <div class="anacom-section-block">
+        <h4>5. Overall Opportunities & Threats (SWOT de Comunicação p/ o Sprint)</h4>
+        <ul>
+          <li><strong>Ameaças:</strong> Bloqueio do WhatsApp na rotina latina; percepção do Gemini como ferramenta corporativa ou técnica.</li>
+          <li><strong>Oportunidades:</strong> Gemini já está no botão de ligar e na câmera do Android de bilhões de latinos; explorar sotaques e gírias locais; multimodalidade real ("aponte a câmera e resolva").</li>
+        </ul>
+      </div>
+    `;
+
+    const fullAnacomTextRaw = `==========================================================
+GOOGLE GEMINI SPRINT // LATAM COMPETITIVE PRE-READ (ANACOM)
+Markets: Brasil, México, Argentina e Colômbia
+Competitors: ChatGPT, Claude, Meta/Muse, Copilot, Dola (MX)
+==========================================================
+
+1. PREVIOUS MAPPING:
+• ChatGPT: Dono absoluto do awareness popular e sinônimo de categoria ("dar um chat"). Foco em curiosidade e uso casual.
+• Claude: Niche técnico de desenvolvedores e código limpo, reconhecido por raciocínio lógico e ética.
+• Meta AI: Foco em conveniência zero fricção ("já está no seu WhatsApp"), sem exigir download ou login.
+• Microsoft Copilot: Dominante na produtividade de escritório, ancorado no Windows, Office e Teams.
+• Dola (MX): Utilitário prático de calendário por mensagem de voz no México.
+
+2. WHAT HAS CHANGED:
+• De Chat para Ação (Meta / Muse): Lançamento do Muse com mascote Jolly, executando tarefas e compras em segundo plano no WhatsApp e Instagram.
+• Ataque Frontal ao Search (ChatGPT): A OpenAI começou a promover o ChatGPT Search contra o Google, mirando universitários e jovens no Brasil e Argentina.
+• A Força do Áudio no Zap (Dola MX): Provou na América Latina que mandar mensagem de voz no WhatsApp supera o uso de aplicativos de calendário formais.
+• Comunidade Técnica Conquistada (Claude Artifacts): Dominou a preferência dos desenvolvedores e criadores de produtos digitais na região.
+
+3. WHAT DOES IT IMPLY FOR US:
+• Risco de Bloqueio de Hábito no WhatsApp: Meta AI e Dola criam frequência diária no Zap antes que o usuário sinta falta do Gemini.
+• Defesa do Core de Busca: O Gemini precisa comunicar com urgência que une IA profunda com a confiabilidade e atualização em tempo real do Google Search.
+• Ativação do Ecossistema Android: A presença nativa de fábrica em bilhões de aparelhos na LATAM é nossa maior vantagem; precisa ser comunicada como benefício prático e imediato.
+
+4. NOTABLE EXECUTIONS PER COUNTRY:
+• Brasil (BR): Meta AI ativou creators de culinária e maternidade para normalizar o uso no WhatsApp. Copilot investiu em OOH e LinkedIn Top Voices.
+• México (MX): Dola viralizou com campanhas de áudio no TikTok; Meta foca em comércio e respostas no WhatsApp Business.
+• Argentina (AR): Alta penetração de ChatGPT e Copilot como ferramentas essenciais para freelancers de tecnologia e trabalho remoto em dólar.
+• Colômbia (CO): Hubs de startups em Bogotá e Medellín com forte adoção de Meta WhatsApp para atendimento e Claude para código.
+
+5. OPPORTUNITIES & THREATS:
+• Ameaças: Bloqueio do WhatsApp na rotina latina; percepção do Gemini como ferramenta corporativa ou técnica.
+• Oportunidades: Gemini já está no botão de ligar e na câmera do Android de bilhões de latinos; explorar sotaques e gírias locais; multimodalidade real ("aponte a câmera e resolva").`;
+
+    function renderFullAnacom() {
+      copilotBox.style.display = 'block';
+      currentFmTitle.innerText = '✦ Dossiê Estratégico ANACOM (Sprint Google Gemini)';
+      copilotReportArea.innerHTML = fullAnacomHtml;
+      metric1.innerText = 'Dossiê Completo';
+      metric2.innerText = 'BR, MX, AR, CO';
+      metric3.innerText = 'Pre-read p/ Sprint';
+      metricLbl1.innerText = 'Escopo';
+      metricLbl2.innerText = 'Mercados';
+      metricLbl3.innerText = 'Objetivo';
+      appState.competitor = 'all';
+      appState.country = 'all';
+      document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.toggle('active', b.getAttribute('data-competitor') === 'all'));
+      document.querySelectorAll('#regionFilters .region-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-country') === 'all'));
+      filterCards();
+    }
 
     function executeAnalysis() {
       const q = omniInput.value.toLowerCase().trim();
@@ -1023,32 +1125,91 @@
         return;
       }
 
+      // Check if user is asking for the full ANACOM
+      if (q.includes('anacom') || q.includes('completa') || q.includes('dossie') || q.includes('relatorio completo') || q.includes('sprint briefing')) {
+        renderFullAnacom();
+        return;
+      }
+
       currentFmTitle.innerText = frameworks[appState.framework] || '✦ Análise Estratégica';
 
-      let match = sprintDatabase.find(item => item.keys.some(k => q.includes(k)));
-
-      if (match) {
+      if (q.includes('dola') || q.includes('mexico')) {
         copilotBox.style.display = 'block';
-        copilotText.innerHTML = match.answer;
-        metric1.innerText = match.m1;
-        metric2.innerText = match.m2;
-        metric3.innerText = match.m3;
-        metricLbl1.innerText = match.lbl1;
-        metricLbl2.innerText = match.lbl2;
-        metricLbl3.innerText = match.lbl3;
-
-        if (match.filterComp && match.filterComp !== 'all') {
-          appState.competitor = match.filterComp;
-          document.querySelectorAll('#competitorTabs .tab-item').forEach(t => {
-            t.classList.toggle('active', t.getAttribute('data-competitor') === match.filterComp);
-          });
-        }
+        copilotReportArea.innerHTML = `
+          <div class="anacom-section-block">
+            <h4>🇲🇽 Dola no México (Ameaça Crítica ao Google Calendar)</h4>
+            <p>• <strong>O que é:</strong> Bot de WhatsApp que virou febre no México para organizar agendas e lembretes apenas enviando áudios em espanhol.<br>
+            • <strong>Impacto:</strong> O usuário sincroniza com o Google Calendar sem nunca abrir o app do Google.<br>
+            • <strong>Implicação p/ Gemini:</strong> Provar que o Gemini no celular organiza a vida com a mesma facilidade via voz no Android.</p>
+          </div>
+        `;
+        metric1.innerText = 'Agenda no WhatsApp';
+        metric2.innerText = '🇲🇽 México';
+        metric3.innerText = 'Foco em Voz no Zap';
+        metricLbl1.innerText = 'Pilar';
+        metricLbl2.innerText = 'País';
+        metricLbl3.innerText = 'Atenção';
+        appState.competitor = 'Dola';
+        document.querySelectorAll('#competitorTabs .tab-item').forEach(t => t.classList.toggle('active', t.getAttribute('data-competitor') === 'Dola'));
+      } else if (q.includes('meta') || q.includes('muse')) {
+        copilotBox.style.display = 'block';
+        copilotReportArea.innerHTML = `
+          <div class="anacom-section-block">
+            <h4>🤖 Meta / Muse (A Transição para Agentes Executores)</h4>
+            <p>• <strong>O que é:</strong> O agente da Meta lançado para executar tarefas em segundo plano (reservas, compras e e-mails) no WhatsApp e Instagram com o mascote Jolly.<br>
+            • <strong>Implicação p/ Gemini:</strong> Meta está passando da IA que "fala" para a IA que "faz". Gemini precisa acelerar a narrativa de integração prática no ecossistema Google.</p>
+          </div>
+        `;
+        metric1.innerText = 'Agentes Autônomos';
+        metric2.innerText = '🇧🇷 Brasil & LATAM';
+        metric3.innerText = 'Automação no Zap';
+        metricLbl1.innerText = 'Pilar';
+        metricLbl2.innerText = 'Região';
+        metricLbl3.innerText = 'Atenção';
+        appState.competitor = 'Meta';
+        document.querySelectorAll('#competitorTabs .tab-item').forEach(t => t.classList.toggle('active', t.getAttribute('data-competitor') === 'Meta'));
+      } else if (q.includes('argentina') || q.includes('colombia')) {
+        copilotBox.style.display = 'block';
+        copilotReportArea.innerHTML = `
+          <div class="anacom-section-block">
+            <h4>🇦🇷 🇨🇴 Cenário na Argentina e Colômbia</h4>
+            <p>• <strong>Argentina (🇦🇷):</strong> Forte apelo de ChatGPT e Copilot como aceleradores de produtividade para freelancers e talentos de tecnologia que trabalham para fora em dólar.<br>
+            • <strong>Colômbia (🇨🇴):</strong> Hub de startups em Bogotá e Medellín com forte adoção de Meta AI e bots de WhatsApp para e-commerce local.<br>
+            • <strong>Claude:</strong> Líder indiscutível de reputação técnica em ambos os países para programação e código avançado.</p>
+          </div>
+        `;
+        metric1.innerText = 'Trabalho & Devs';
+        metric2.innerText = '🇦🇷 AR & 🇨🇴 CO';
+        metric3.innerText = 'Produtividade e Freelas';
+        metricLbl1.innerText = 'Pilar Chave';
+        metricLbl2.innerText = 'Região';
+        metricLbl3.innerText = 'Oportunidade';
+      } else if (q.includes('implicacoes') || q.includes('imply')) {
+        copilotBox.style.display = 'block';
+        copilotReportArea.innerHTML = `
+          <div class="anacom-section-block">
+            <h4>🎯 O que isso implica para o Google Gemini na LATAM</h4>
+            <p>1. <strong>Bloqueio no WhatsApp:</strong> Meta e Dola estão criando o hábito diário de IA no Zap antes do Gemini.<br>
+            2. <strong>Defesa do Search:</strong> ChatGPT Search está tentando fazer a busca tradicional parecer antiquada para universitários.<br>
+            3. <strong>Oportunidade de Ouro:</strong> Gemini é nativo no Android de bilhões de latinos e no Workspace. A comunicação precisa destacar utilidade real no dia a dia.</p>
+          </div>
+        `;
+        metric1.innerText = '3 Implicações';
+        metric2.innerText = 'LATAM Geral';
+        metric3.innerText = 'Acelerar Utilidade';
+        metricLbl1.innerText = 'Síntese';
+        metricLbl2.innerText = 'Escopo';
+        metricLbl3.innerText = 'Prioridade';
       } else {
         copilotBox.style.display = 'block';
-        let customNotice = appState.customFrameworkText ? `<br><br><strong>Estrutura Aplicada:</strong><br>${appState.customFrameworkText.replace(/\n/g, '<br>')}` : '';
-        copilotText.innerHTML = `Analisando registros sob o <strong>${frameworks[appState.framework]}</strong> para "${omniInput.value}". Os criativos correspondentes foram filtrados nos cards abaixo.${customNotice}`;
+        copilotReportArea.innerHTML = `
+          <div class="anacom-section-block">
+            <h4>Análise para "${omniInput.value}"</h4>
+            <p>Identificamos registros sob o <strong>${frameworks[appState.framework]}</strong>. As peças e movimentações correspondentes foram filtradas nos cards abaixo.</p>
+          </div>
+        `;
         metric1.innerText = 'Filtro Ativo';
-        metric2.innerText = 'LATAM (BR, MX, AR, CO)';
+        metric2.innerText = 'LATAM';
         metric3.innerText = 'Pre-read Sprint';
         metricLbl1.innerText = 'Status';
         metricLbl2.innerText = 'Escopo';
@@ -1071,13 +1232,21 @@
         
         const s = appState.search.toLowerCase().trim();
         const searchWords = s.split(' ').filter(w => w.length > 2);
-        const matchSearch = (!s || searchWords.some(w => cText.includes(w)) || cText.includes(s));
+        const matchSearch = (!s || s.includes('anacom') || searchWords.some(w => cText.includes(w)) || cText.includes(s));
 
         if (matchComp && matchMedia && matchCountry && matchSearch) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
+      });
+    }
+
+    if (btnCopyDossier) {
+      btnCopyDossier.addEventListener('click', () => {
+        navigator.clipboard.writeText(fullAnacomTextRaw).then(() => {
+          showToast('📋 ANACOM Completa copiada para os slides!');
+        });
       });
     }
 
@@ -1168,8 +1337,7 @@
     const btnExport = document.getElementById('btnExportReport');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
-        const structure = `==========================================================\nGOOGLE GEMINI SPRINT // LATAM COMPETITIVE PRE-READ\nMarkets: Brasil, México, Argentina e Colômbia\nFramework: Previous Mapping | What Changed | Implications\n==========================================================\n\n1. PREVIOUS MAPPING:\n• ChatGPT: Brand awareness leader & generic category name.\n• Claude: Technical niche for coding and deep research.\n• Meta AI: Everyday presence embedded in WhatsApp.\n• Copilot: Dominant in enterprise/workplace.\n• Dola (MX): Viral WhatsApp calendar assistant in Mexico.\n\n2. WHAT HAS CHANGED:\n• Meta launched Muse: Shift from chatbots to agentic task execution.\n• ChatGPT Search attacking Google core search with students.\n• Dola proved Latam users prefer voice notes over calendar apps.\n• Claude gained dev community mindshare with Artifacts.\n\n3. WHAT DOES IT IMPLY FOR GEMINI:\n• Defend WhatsApp / Mobile habit with native Android integration.\n• Protect Google Workspace & Calendar utility.\n• Win the Search war by proving Gemini is real-time and grounded.\n\n4. NOTABLE EXECUTIONS PER COUNTRY:\n• BR: Meta mass lifestyle creator campaign for WhatsApp.\n• MX: Dola viral TikTok & WhatsApp audio scheduling.\n• AR: ChatGPT & Copilot for tech freelancers and remote work.\n• CO: Meta WhatsApp bots for commerce & customer service.\n\n5. OPPORTUNITIES & THREATS:\n• Threat: WhatsApp habit lock-in across all 4 countries.\n• Opportunity: Android default reach & multimodal camera utility.`;
-        navigator.clipboard.writeText(structure).then(() => {
+        navigator.clipboard.writeText(fullAnacomTextRaw).then(() => {
           showToast('📥 Estrutura completa copiada para o Google Slides!');
         });
       });
