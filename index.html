@@ -1,4 +1,4 @@
-<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="5" width="1200" height="800">
+<html data-type="html" data-identifier="89d1ec20-d3a2-4a0b-93de-bbf1340b1e11" data-title="Google Gemini LATAM - Radar de Inteligência Competitiva" data-version="7" width="1200" height="800">
 <head>
   <meta charset="UTF-8">
   <title>Google Gemini LATAM // Radar de Inteligência Competitiva (ANACOM)</title>
@@ -147,23 +147,35 @@
       color: #ffffff;
       border-color: #60a5fa;
     }
-    .sync-indicator {
+
+    /* Regional Filter */
+    .region-pills-row {
       display: flex;
-      align-items: center;
       gap: 8px;
-      background: rgba(13, 23, 44, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 6px 12px;
       border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 12px;
-      color: #93c5fd;
+      width: fit-content;
     }
-    .dot-pulse {
-      width: 7px;
-      height: 7px;
-      background: #38bdf8;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #38bdf8;
+    .region-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .region-btn:hover {
+      color: #f1f5f9;
+    }
+    .region-btn.active {
+      background: rgba(59, 130, 246, 0.25);
+      color: #93c5fd;
+      font-weight: 600;
     }
 
     /* Prompt Area */
@@ -182,7 +194,7 @@
     }
     .capsule-search-bar {
       width: 100%;
-      max-width: 860px;
+      max-width: 880px;
       background: rgba(10, 16, 32, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
@@ -209,17 +221,25 @@
     .capsule-input::placeholder {
       color: #64748b;
     }
-    .model-selector-pill {
+
+    /* Interactive Framework Dropdown Selector */
+    .framework-dropdown-btn {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
-      padding: 5px 10px;
+      padding: 5px 12px;
       font-size: 11px;
       color: #93c5fd;
       display: flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .framework-dropdown-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #60a5fa;
     }
 
     .btn-run-analysis {
@@ -328,7 +348,7 @@
       color: #94a3b8;
     }
 
-    /* Tabs: Fixed Height, Centering, and No-Shrink */
+    /* Competitor Tabs */
     .competitor-tabs {
       display: flex;
       gap: 8px;
@@ -367,7 +387,7 @@
       box-shadow: 0 0 16px rgba(37, 99, 235, 0.25);
     }
 
-    /* Media Filters: Fixed Height & No-Shrink */
+    /* Media Filters */
     .media-pills-row {
       display: flex;
       gap: 8px;
@@ -436,12 +456,10 @@
       padding: 3px 8px;
       border-radius: 6px;
     }
-    .badge-grok { background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-dola { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
     .badge-meta { background: rgba(37, 99, 235, 0.2); color: #93c5fd; border: 1px solid rgba(37, 99, 235, 0.3); }
     .badge-chatgpt { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
     .badge-copilot { background: rgba(147, 51, 234, 0.2); color: #d8b4fe; border: 1px solid rgba(147, 51, 234, 0.3); }
-    .badge-apple { background: rgba(148, 163, 184, 0.2); color: #f1f5f9; border: 1px solid rgba(148, 163, 184, 0.3); }
-    .badge-perplexity { background: rgba(20, 184, 166, 0.2); color: #5eead4; border: 1px solid rgba(20, 184, 166, 0.3); }
     .badge-claude { background: rgba(217, 119, 6, 0.2); color: #fcd34d; border: 1px solid rgba(217, 119, 6, 0.3); }
 
     .card-meta-chips {
@@ -455,6 +473,13 @@
       padding: 2px 6px;
       border-radius: 4px;
       color: #94a3b8;
+    }
+    .chip-country {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
     }
 
     .card-body {
@@ -539,74 +564,74 @@
       text-decoration: underline;
     }
 
-    /* Modal / Metrics Panel */
-    .metrics-modal-overlay {
+    /* Custom Framework Modal */
+    .framework-modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
       background: rgba(3, 6, 17, 0.85);
       backdrop-filter: blur(8px);
-      z-index: 2000;
+      z-index: 2100;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .metrics-modal-card {
+    .framework-modal-card {
       background: #0b1120;
-      border: 1px solid rgba(96, 165, 250, 0.3);
+      border: 1px solid rgba(96, 165, 250, 0.35);
       border-radius: 16px;
-      max-width: 680px;
+      max-width: 580px;
       width: 100%;
       padding: 24px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
-    .modal-header {
+    .framework-modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 12px;
+      padding-bottom: 10px;
     }
-    .modal-header h3 {
-      font-size: 17px;
+    .framework-modal-header h3 {
+      font-size: 16px;
       color: #f8fafc;
       font-weight: 500;
     }
-    .btn-close-modal {
+    .btn-close-fm {
       background: transparent;
       border: none;
       color: #94a3b8;
       font-size: 18px;
       cursor: pointer;
     }
-    .metrics-chart-bar-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .framework-textarea {
+      width: 100%;
+      height: 120px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px;
+      color: #f8fafc;
+      font-size: 13px;
+      outline: none;
+      resize: vertical;
     }
-    .chart-bar-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .framework-textarea:focus {
+      border-color: #60a5fa;
     }
-    .chart-label-group {
-      display: flex;
-      justify-content: space-between;
+    .btn-save-custom-fm {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #2563eb, #8b5cf6);
+      border: none;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 100px;
       font-size: 12px;
-      color: #cbd5e1;
-    }
-    .bar-bg {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 100px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 100px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     .toast-notice {
@@ -628,14 +653,14 @@
 </head>
 <body>
 
-  <!-- Left Sidebar (Fully Functional) -->
+  <!-- Left Sidebar -->
   <aside class="gemini-sidebar">
     <div class="sidebar-top">
       <div class="gemini-logo-sparkle" id="btnLogoHome" title="Ir para Home / Feed">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v7)"/>
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" fill="url(#gemini_grad_v9)"/>
           <defs>
-            <linearGradient id="gemini_grad_v7" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gemini_grad_v9" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#4285F4"/>
               <stop offset="35%" stop-color="#EA4335"/>
               <stop offset="70%" stop-color="#FBBC05"/>
@@ -645,7 +670,6 @@
         </svg>
       </div>
       <div class="side-icon active" id="btnNavRadar" title="Radar Principal">✦</div>
-      <div class="side-icon" id="btnNavMetrics" title="Métricas & Share of Voice">📊</div>
       <div class="side-icon" id="btnNavSources" title="Canais & Fontes Monitoradas">▦</div>
     </div>
     <div class="sidebar-bottom">
@@ -659,31 +683,39 @@
     <!-- Top Header -->
     <header class="top-header">
       <div class="header-titles">
-        <h1 id="v5-header-title">Google Gemini <span class="badge-latam">LATAM // RADAR ANACOM</span></h1>
-        <p id="v5-header-sub" class="header-sub">Inteligência de comunicação, análise de campanhas e métricas dos rivais de IA</p>
+        <h1 id="v7-header-title">Google Gemini <span class="badge-latam">LATAM // SPRINT ANACOM</span></h1>
+        <p id="v7-header-sub" class="header-sub">Pre-read oficial: ChatGPT, Claude, Meta/Muse, Copilot e Dola (MX)</p>
       </div>
       <div class="header-actions">
-        <button class="btn-export-report" id="btnExportReport">
-          <span>📥</span> Exportar Resumo p/ Slide
-        </button>
-        <div class="sync-indicator">
-          <span class="dot-pulse"></span>
-          <span id="v5-sync-label">Sincronizado • 7 Rivais</span>
+        <!-- Country Selector -->
+        <div class="region-pills-row" id="regionFilters">
+          <button class="region-btn active" data-country="all">🌎 Toda LATAM</button>
+          <button class="region-btn" data-country="BR">🇧🇷 Brasil</button>
+          <button class="region-btn" data-country="MX">🇲🇽 México</button>
         </div>
+
+        <button class="btn-export-report" id="btnExportReport">
+          <span>📥</span> Copiar Estrutura p/ Slide
+        </button>
       </div>
     </header>
 
-    <!-- Gemini Hero Prompt Capsule Area with Action Button -->
+    <!-- Prompt Area with Framework Dropdown -->
     <div class="prompt-hero-container">
-      <h2 id="v5-prompt-title" class="prompt-title">Por onde começamos a análise?</h2>
+      <h2 id="v7-prompt-title" class="prompt-title">Análise Estratégica Concorrencial</h2>
       
       <div class="capsule-search-bar">
         <span style="color:#94a3b8; font-size:18px;">+</span>
-        <input type="text" id="omniInput" class="capsule-input" placeholder="Faça uma pergunta (ex: 'influenciadores', 'frequencia do grok') ou digite termos..." />
-        <div class="model-selector-pill">
-          <span>● ANACOM Copilot</span>
-          <span>▼</span>
-        </div>
+        <input type="text" id="omniInput" class="capsule-input" placeholder="Pergunte sobre concorrentes (ex: 'dola mexico', 'meta muse', 'implicacoes')..." />
+        
+        <!-- Interactive Framework Selector -->
+        <select id="frameworkSelect" class="framework-dropdown-btn">
+          <option value="fm1">● Framework 1: Diagnóstico de Sprint</option>
+          <option value="fm2">● Framework 2: 4Cs de Comunicação</option>
+          <option value="fm3">● Framework 3: SWOT & Movimentos</option>
+          <option value="custom">✏️ Personalizado (Digitar na hora)...</option>
+        </select>
+
         <button class="btn-run-analysis" id="btnSubmitSearch">
           <span>✦</span> Analisar ➔
         </button>
@@ -691,214 +723,184 @@
 
       <!-- Quick Analysis Chips -->
       <div class="quick-chips-row">
-        <button class="quick-chip" data-query="com quais influenciadores a categoria trabalhou">🌟 Influenciadores na categoria</button>
-        <button class="quick-chip" data-query="qual a frequencia de posts do grok no instagram">📈 Frequência do Grok no Instagram</button>
-        <button class="quick-chip" data-query="qual foco de meta ai no brasil">💬 Foco da Meta AI no Brasil</button>
-        <button class="quick-chip" data-query="quais os comerciais de tv e video do copilot">📺 Filmes e Comerciais do Copilot</button>
+        <button class="quick-chip" data-query="o que e dola no mexico">🇲🇽 O que é Dola no México?</button>
+        <button class="quick-chip" data-query="estrategia de meta muse">🤖 O que é Meta Muse?</button>
+        <button class="quick-chip" data-query="implicacoes para o gemini">🎯 O que isso implica para o Gemini?</button>
+        <button class="quick-chip" data-query="influenciadores e social na regiao">📱 Influenciadores & Social na LATAM</button>
       </div>
     </div>
 
     <!-- Dynamic Synthesis Response Box -->
     <section class="copilot-response-box" id="copilotResponse">
       <div class="copilot-header">
-        <span class="copilot-header-tag">✦ Síntese Estratégica ANACOM</span>
-        <span class="copilot-header-source">Fontes: The Drum, Ad Age, M&M, B9, Meta Ads & Social</span>
+        <span class="copilot-header-tag" id="currentFmTitle">✦ Framework 1: Diagnóstico de Sprint</span>
+        <span class="copilot-header-source">Pre-read pronto para Google Slides</span>
       </div>
       <p id="copilotText" class="copilot-answer">Analisando base de dados...</p>
       <div class="copilot-metrics-row" id="copilotMetrics">
         <div class="metric-item">
           <span class="metric-val" id="metric1">-</span>
-          <span class="metric-lbl" id="metricLbl1">Volume Detectado</span>
+          <span class="metric-lbl" id="metricLbl1">Pilar Analisado</span>
         </div>
         <div class="metric-item">
           <span class="metric-val" id="metric2">-</span>
-          <span class="metric-lbl" id="metricLbl2">Frequência Média</span>
+          <span class="metric-lbl" id="metricLbl2">País / Região</span>
         </div>
         <div class="metric-item">
           <span class="metric-val" id="metric3">-</span>
-          <span class="metric-lbl" id="metricLbl3">Território Dominante</span>
+          <span class="metric-lbl" id="metricLbl3">Ação Recomendada</span>
         </div>
       </div>
     </section>
 
-    <!-- Competitors Tabs: Non-collapsible, perfectly aligned -->
+    <!-- Competitors Tabs: 5 Official Rivals from Briefing -->
     <nav class="competitor-tabs" id="competitorTabs">
-      <button class="tab-item active" data-competitor="all">✦ Todos os Rivais</button>
-      <button class="tab-item" data-competitor="Grok">Grok (xAI)</button>
-      <button class="tab-item" data-competitor="ChatGPT">ChatGPT (OpenAI)</button>
-      <button class="tab-item" data-competitor="Copilot">Microsoft Copilot</button>
-      <button class="tab-item" data-competitor="Meta AI">Meta AI</button>
-      <button class="tab-item" data-competitor="Apple">Apple Intelligence</button>
-      <button class="tab-item" data-competitor="Perplexity">Perplexity AI</button>
-      <button class="tab-item" data-competitor="Claude">Claude (Anthropic)</button>
+      <button class="tab-item active" data-competitor="all">✦ Todos os Rivais do Briefing</button>
+      <button class="tab-item" data-competitor="Dola">Dola (MX)</button>
+      <button class="tab-item" data-competitor="Meta">Meta / Muse</button>
+      <button class="tab-item" data-competitor="ChatGPT">ChatGPT</button>
+      <button class="tab-item" data-competitor="Copilot">Copilot</button>
+      <button class="tab-item" data-competitor="Claude">Claude</button>
     </nav>
 
-    <!-- Media Filters: Non-collapsible, perfectly aligned -->
+    <!-- Media Filters -->
     <div class="media-pills-row" id="mediaPills">
       <button class="media-pill active" data-media="all">Todas as Mídias</button>
-      <button class="media-pill" data-media="Instagram">📸 Instagram</button>
-      <button class="media-pill" data-media="Trade BR">📰 Trade BR (M&M, B9, Propmark)</button>
-      <button class="media-pill" data-media="Global">🌍 The Drum / Ad Age / Adweek</button>
-      <button class="media-pill" data-media="YouTube">▶️ YouTube / TV</button>
-      <button class="media-pill" data-media="Meta Ads">🎯 Meta Ad Library (Anúncios)</button>
-      <button class="media-pill" data-media="𝕏">𝕏 / Social Pulse</button>
+      <button class="media-pill" data-media="Meios de Massa">📺 Meios de Massa (TV/OOH)</button>
+      <button class="media-pill" data-media="Social & Influx">📸 Social & Influenciadores</button>
+      <button class="media-pill" data-media="RP & Trade">📰 RP & Imprensa Especializada</button>
+      <button class="media-pill" data-media="WhatsApp Bot">💬 WhatsApp Bots & Ativação</button>
     </div>
 
     <!-- Cards Feed Grid -->
     <section class="feed-grid" id="feedGrid">
 
-      <!-- Card 1: Grok Instagram -->
-      <article class="feed-card" data-competitor="Grok" data-media="Instagram" data-text="grok instagram xai posts memes frequencia cadencia geracao de imagem sem censura">
+      <!-- Card 1: Dola (MX) -->
+      <article class="feed-card" data-competitor="Dola" data-country="MX" data-media="WhatsApp Bot" data-text="dola mx mexico whatsapp calendario agenda audios produtividade">
         <div class="card-top">
-          <span class="badge-brand badge-grok">Grok (xAI)</span>
+          <span class="badge-brand badge-dola">Dola (MX)</span>
           <div class="card-meta-chips">
-            <span class="chip-channel">Instagram</span>
-            <span>Há 2 dias</span>
+            <span class="chip-country">🇲🇽 México</span>
+            <span class="chip-channel">WhatsApp Bot</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c5-title-grok-1" class="card-title">Sequência de Carrosséis: 'Geração de Imagens sem Filtro'</h3>
-          <p id="c5-desc-grok-1" class="card-desc">Grok intensificou a frequência no Instagram com 14 posts no trimestre (1,2 posts/semana), demonstrando prompts visuais satíricos e hiper-realistas para atrair criadores cansados de filtros de moderação.</p>
+          <h3 id="c7-title-dola" class="card-title">Fenômeno no México: Agenda e Lembretes via Áudio no WhatsApp</h3>
+          <p id="c7-desc-dola" class="card-desc">Dola viralizou entre PMEs e universitários mexicanos ao permitir marcar compromissos e sincronizar com o Google Calendar enviando apenas mensagens de voz no Zap, sem abrir apps de agenda.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>Território:</strong> Liberdade Criativa & Sátira</span>
-            <span class="insight-line"><strong>Cadência:</strong> Concentrado em terças e quintas</span>
+            <span class="insight-line"><strong>What Changed:</strong> Conquistou o hábito de produtividade dentro do Zap.</span>
+            <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Invade o território nativo do Google Assistant/Calendar.</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="source-tag">@grok oficial</span>
+          <span class="source-tag">Viral TikTok MX / WhatsApp</span>
           <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="Grok: Geração de Imagem sem Filtro" data-insight="Território: Liberdade Criativa. 14 posts no trimestre.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="https://instagram.com" target="_blank">Ver Post ↗</a>
+            <button class="btn-slide-copy" data-title="Dola (MX): Assistente de Agenda no WhatsApp" data-insight="Ameaça direta ao Google Calendar no México por resolver rotina via áudio no Zap.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="https://heydola.com" target="_blank">Ver Case ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Card 2: Meta AI Influenciadores -->
-      <article class="feed-card" data-competitor="Meta AI" data-media="Trade BR" data-text="meta ai influenciadores creators brasil whatsapp celebridades b9 meio e mensagem">
+      <!-- Card 2: Meta / Muse -->
+      <article class="feed-card" data-competitor="Meta" data-country="BR" data-media="Social & Influx" data-text="meta muse agentic jolly mascote tarefas segundo plano whatsapp instagram brasil">
         <div class="card-top">
-          <span class="badge-brand badge-meta">Meta AI</span>
+          <span class="badge-brand badge-meta">Meta / Muse</span>
           <div class="card-meta-chips">
-            <span class="chip-channel">Trade BR</span>
-            <span>Há 3 dias</span>
+            <span class="chip-country">🇧🇷 Brasil / LATAM</span>
+            <span class="chip-channel">Social & Influx</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c5-title-meta-1" class="card-title">Estratégia de Influenciadores: Creators de Lifestyle & Maternidade</h3>
-          <p id="c5-desc-meta-1" class="card-desc">A Meta ativou mais de 25 creators de culinária e rotina no Brasil para mostrar o uso da IA no WhatsApp em tarefas práticas cotidianas, intencionalmente evitando influenciadores de tecnologia.</p>
+          <h3 id="c7-title-meta" class="card-title">Meta Muse: A Virada da IA 'Passiva' para 'Agentes que Fazem Coisas'</h3>
+          <p id="c7-desc-meta" class="card-desc">Lançamento de Muse com o mascote 'Jolly' e o gadget 'Muse Charm', promovendo uma IA que compra passagens, gerencia e-mails e resolve pendências em segundo plano no WhatsApp e Instagram.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>Perfil de Creator:</strong> Lifestyle, Maternidade & Culinária</span>
-            <span class="insight-line"><strong>Mote Central:</strong> 'Tirei a dúvida no Zap em 2 segundos'</span>
+            <span class="insight-line"><strong>What Changed:</strong> Mudança de chatbot que conversa para agente executor.</span>
+            <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Risco de o usuário delegar tarefas pessoais fora do Google.</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="source-tag">Meio & Mensagem / B9</span>
+          <span class="source-tag">Meta Connect / Meio & Mensagem</span>
           <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="Meta AI: Estratégia de Creators no Brasil" data-insight="Foco em Lifestyle e Culinária no WhatsApp. Sem jargões técnicos.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="#" target="_blank">Ler Matéria ↗</a>
+            <button class="btn-slide-copy" data-title="Meta / Muse: Mudança para IA Agentica" data-insight="Meta avança para execução de tarefas em segundo plano no WhatsApp e IG com mascote Jolly.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ver Análise ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Card 3: Apple Intelligence TV -->
-      <article class="feed-card" data-competitor="Apple" data-media="YouTube" data-text="apple intelligence influenciadores atores celebridades comedia writing tools">
+      <!-- Card 3: ChatGPT Search -->
+      <article class="feed-card" data-competitor="ChatGPT" data-country="BR" data-media="Meios de Massa" data-text="chatgpt search busca google estudantes universitarios tcc studytok brasil">
         <div class="card-top">
-          <span class="badge-brand badge-apple">Apple Intelligence</span>
+          <span class="badge-brand badge-chatgpt">ChatGPT</span>
           <div class="card-meta-chips">
-            <span class="chip-channel">YouTube / TV</span>
-            <span>Há 4 dias</span>
+            <span class="chip-country">🇧🇷 Brasil</span>
+            <span class="chip-channel">Meios de Massa</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c5-title-apple-1" class="card-title">Filmes de Sitcom: 'Writing Tools e Correção de E-mails'</h3>
-          <p id="c5-desc-apple-1" class="card-desc">A Apple apostou em atores de comédia conhecidos em situações cotidianas constrangedoras salvas pelo recurso de escrita do iPhone, com foco em facilidade e privacidade local.</p>
+          <h3 id="c7-title-chatgpt" class="card-title">ChatGPT Search: Ataque ao Core Business da Busca no Brasil</h3>
+          <p id="c7-desc-chatgpt" class="card-desc">Campanha digital agressiva posicionando o ChatGPT Search como alternativa à busca tradicional do Google para estudantes e jovens, prometendo respostas limpas sem anúncios.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>Estratégia:</strong> Celebridades Mainstream de Comédia</span>
-            <span class="insight-line"><strong>Território:</strong> Situações Humanas & 'IA para todos'</span>
+            <span class="insight-line"><strong>What Changed:</strong> Não é mais só gerador de texto; é motor de busca.</span>
+            <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Defender a superioridade do Search do Google integrado ao Gemini.</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="source-tag">YouTube Oficial Apple</span>
+          <span class="source-tag">The Verge / B9</span>
           <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="Apple Intelligence: Filmes de Sitcom" data-insight="Uso de atores de comédia. Foco em salvar situações cotidianas no iPhone.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="https://youtube.com" target="_blank">Assistir Filme ↗</a>
+            <button class="btn-slide-copy" data-title="ChatGPT: Ataque Direto ao Search" data-insight="Posicionamento agressivo contra links azuis para atrair universitários na LATAM.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ler Cobertura ↗</a>
           </div>
         </div>
       </article>
 
       <!-- Card 4: Microsoft Copilot B2B -->
-      <article class="feed-card" data-competitor="Copilot" data-media="YouTube" data-text="microsoft copilot influenciadores b2b linkedin creators produtividade super bowl">
+      <article class="feed-card" data-competitor="Copilot" data-country="MX" data-media="RP & Trade" data-text="microsoft copilot produtividade linkedin office teams b2b mexico brasil">
         <div class="card-top">
-          <span class="badge-brand badge-copilot">Microsoft Copilot</span>
+          <span class="badge-brand badge-copilot">Copilot</span>
           <div class="card-meta-chips">
-            <span class="chip-channel">YouTube / TV</span>
-            <span>Há 5 dias</span>
+            <span class="chip-country">🇲🇽 México / 🇧🇷 Brasil</span>
+            <span class="chip-channel">RP & Trade</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c5-title-copilot-1" class="card-title">Ativação de 'Top Voices' do LinkedIn e Empreendedores</h3>
-          <p id="c5-desc-copilot-1" class="card-desc">A Microsoft contratou líderes executivos e criadores de conteúdo do LinkedIn para demonstrar o Copilot resumindo reuniões no Teams e gerando relatórios executivos no Excel.</p>
+          <h3 id="c7-title-copilot" class="card-title">Copilot for Work: Cerco Corporativo no Office e Teams</h3>
+          <p id="c7-desc-copilot" class="card-desc">Comunicação pesada focando em profissionais que usam Excel, Teams e Outlook, mostrando redução de reuniões e criação rápida de apresentações com Top Voices do LinkedIn.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>Perfil de Creator:</strong> Executivos, B2B & Top Voices</span>
-            <span class="insight-line"><strong>Mote:</strong> 'An Idea is Just An Idea'</span>
+            <span class="insight-line"><strong>What Changed:</strong> Foco absoluto no ambiente de trabalho e ROI corporativo.</span>
+            <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Necessidade de destacar o Gemini no Google Workspace.</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="source-tag">The Drum / Ad Age</span>
+          <span class="source-tag">Ad Age / The Drum</span>
           <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="Copilot: Ativações B2B no LinkedIn" data-insight="Foco em produtividade corporativa no Office e Teams.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="https://youtube.com" target="_blank">Assistir Vídeo ↗</a>
+            <button class="btn-slide-copy" data-title="Microsoft Copilot: Hegemonia no Trabalho" data-insight="Narrativa de produtividade corporativa no Office para bloquear o Google Workspace.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Assistir Vídeo ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Card 5: Meta Ad Library Anúncios -->
-      <article class="feed-card" data-competitor="Meta AI" data-media="Meta Ads" data-text="meta ai anuncios meta ad library carrossel reels patrocinado">
+      <!-- Card 5: Claude (Anthropic) -->
+      <article class="feed-card" data-competitor="Claude" data-country="BR" data-media="RP & Trade" data-text="claude anthropic artifacts codigo devs raciocinio seguranca brasil">
         <div class="card-top">
-          <span class="badge-brand badge-meta">Meta AI</span>
+          <span class="badge-brand badge-claude">Claude</span>
           <div class="card-meta-chips">
-            <span class="chip-channel">Meta Ad Library</span>
-            <span>Ativo Agora</span>
+            <span class="chip-country">🇧🇷 Brasil</span>
+            <span class="chip-channel">RP & Trade</span>
           </div>
         </div>
         <div class="card-body">
-          <h3 id="c5-title-meta-2" class="card-title">Campanha Patrocinada: 'Crie Figurinhas Direto no Chat'</h3>
-          <p id="c5-desc-meta-2" class="card-desc">Anúncios em Stories e Reels rodando no Brasil ensinando em 3 passos como pedir para a Meta AI gerar stickers personalizados sem precisar baixar apps de terceiros.</p>
+          <h3 id="c7-title-claude" class="card-title">Claude 3.5 Sonnet: O Queridinho dos Desenvolvedores e Criadores</h3>
+          <p id="c7-desc-claude" class="card-desc">Com o recurso 'Artifacts', o Claude conquistou a comunidade técnica e criativa na LATAM, sendo apontado em fóruns e no X como o melhor modelo para código e lógica avançada.</p>
           <div class="insight-box">
-            <span class="insight-line"><strong>Formato:</strong> Reels e Carrossel de Conversão</span>
-            <span class="insight-line"><strong>CTA:</strong> 'Experimente agora no WhatsApp'</span>
+            <span class="insight-line"><strong>What Changed:</strong> Dominou o share of voice técnico e criativo.</span>
+            <span class="insight-line"><strong>Implicação p/ Gemini:</strong> Comunicar o poder de raciocínio profundo e contexto longo do Gemini Pro.</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="source-tag">Meta Ad Library</span>
+          <span class="source-tag">TechCrunch / Dev Community</span>
           <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="Meta AI: Anúncios de Figurinhas no WhatsApp" data-insight="Criativos de alta conversão em Reels e Stories.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="#" target="_blank">Ver Anúncio ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 6: ChatGPT Search -->
-      <article class="feed-card" data-competitor="ChatGPT" data-media="Global" data-text="chatgpt search busca estudantes criadores tech the verge the drum">
-        <div class="card-top">
-          <span class="badge-brand badge-chatgpt">ChatGPT</span>
-          <div class="card-meta-chips">
-            <span class="chip-channel">The Drum / Global</span>
-            <span>Há 1 semana</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 id="c5-title-chatgpt-1" class="card-title">Ataque ao Search: Parcerias com StudyTok e Universitários</h3>
-          <p id="c5-desc-chatgpt-1" class="card-desc">A OpenAI tem promovido o ChatGPT Search em canais de estudo como alternativa superior ao Google, enfatizando respostas limpas com citações bibliográficas diretas.</p>
-          <div class="insight-box">
-            <span class="insight-line"><strong>Target:</strong> Estudantes & Jovens Pesquisadores</span>
-            <span class="insight-line"><strong>Território:</strong> 'Pesquisa sem links azuis poluídos'</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="source-tag">The Drum / The Verge</span>
-          <div class="card-actions-group">
-            <button class="btn-slide-copy" data-title="ChatGPT: Ataque ao Search para Estudantes" data-insight="Ação voltada a pesquisa acadêmica sem anúncios publicitários.">📋 Copiar p/ Slide</button>
-            <a class="action-btn" href="#" target="_blank">Ler Cobertura ↗</a>
+            <button class="btn-slide-copy" data-title="Claude: Liderança Técnica e Artifacts" data-insight="Forte atração na comunidade de devs e criadores que buscam raciocínio profundo.">📋 Copiar p/ Slide</button>
+            <a class="action-btn" href="#" target="_blank">Ver Análise ↗</a>
           </div>
         </div>
       </article>
@@ -907,50 +909,16 @@
 
   </main>
 
-  <!-- Metrics Modal -->
-  <div class="metrics-modal-overlay" id="metricsModal">
-    <div class="metrics-modal-card">
-      <div class="modal-header">
-        <h3 id="c5-modal-heading">📊 Métricas da Categoria (Últimos 90 Dias)</h3>
-        <button class="btn-close-modal" id="btnCloseModal">✕</button>
+  <!-- Custom Framework Modal -->
+  <div class="framework-modal-overlay" id="customFmModal">
+    <div class="framework-modal-card">
+      <div class="framework-modal-header">
+        <h3 id="c7-fm-modal-title">✏️ Definir Framework Personalizado</h3>
+        <button class="btn-close-fm" id="btnCloseFmModal">✕</button>
       </div>
-      <div class="metrics-chart-bar-row">
-        <div class="chart-bar-item">
-          <div class="chart-label-group">
-            <span>Meta AI (WhatsApp / Social / OOH)</span>
-            <strong>38% Share de Mídia</strong>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 38%; background: #3b82f6;"></div></div>
-        </div>
-        <div class="chart-bar-item">
-          <div class="chart-label-group">
-            <span>Microsoft Copilot (TV / YouTube / LinkedIn)</span>
-            <strong>26% Share de Mídia</strong>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 26%; background: #8b5cf6;"></div></div>
-        </div>
-        <div class="chart-bar-item">
-          <div class="chart-label-group">
-            <span>ChatGPT / OpenAI (Search / Acadêmico)</span>
-            <strong>18% Share de Mídia</strong>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 18%; background: #10b981;"></div></div>
-        </div>
-        <div class="chart-bar-item">
-          <div class="chart-label-group">
-            <span>Grok (Instagram Carrosséis / X Real Time)</span>
-            <strong>10% Share de Mídia</strong>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 10%; background: #f43f5e;"></div></div>
-        </div>
-        <div class="chart-bar-item">
-          <div class="chart-label-group">
-            <span>Apple Intelligence / Perplexity / Claude</span>
-            <strong>8% Share de Mídia</strong>
-          </div>
-          <div class="bar-bg"><div class="bar-fill" style="width: 8%; background: #64748b;"></div></div>
-        </div>
-      </div>
+      <p style="font-size: 12px; color: #94a3b8;">Digite os pilares que você quer que o Copilot analise para os concorrentes:</p>
+      <textarea id="customFmInput" class="framework-textarea" placeholder="Ex: 1. Tom de voz&#10;2. Uso de celebridades ou influenciadores&#10;3. Canais de maior investimento&#10;4. Ponto fraco explorável pelo Gemini"></textarea>
+      <button class="btn-save-custom-fm" id="btnSaveCustomFm">Salvar Framework na Tela</button>
     </div>
   </div>
 
@@ -960,7 +928,10 @@
     const appState = {
       competitor: 'all',
       media: 'all',
-      search: ''
+      country: 'all',
+      search: '',
+      framework: 'fm1',
+      customFrameworkText: localStorage.getItem('gemini_custom_fm') || ''
     };
 
     const cards = document.querySelectorAll('.feed-card');
@@ -975,7 +946,12 @@
     const toast = document.getElementById('toast');
     const omniInput = document.getElementById('omniInput');
     const btnSubmitSearch = document.getElementById('btnSubmitSearch');
-    const metricsModal = document.getElementById('metricsModal');
+    const frameworkSelect = document.getElementById('frameworkSelect');
+    const currentFmTitle = document.getElementById('currentFmTitle');
+    const customFmModal = document.getElementById('customFmModal');
+    const btnCloseFmModal = document.getElementById('btnCloseFmModal');
+    const btnSaveCustomFm = document.getElementById('btnSaveCustomFm');
+    const customFmInput = document.getElementById('customFmInput');
 
     function showToast(msg) {
       toast.innerText = msg;
@@ -983,54 +959,58 @@
       setTimeout(() => { toast.style.display = 'none'; }, 2200);
     }
 
-    const anacomDatabase = [
+    // Framework definitions
+    const frameworks = {
+      fm1: '✦ Framework 1: Diagnóstico de Sprint',
+      fm2: '✦ Framework 2: 4Cs de Comunicação',
+      fm3: '✦ Framework 3: SWOT & Movimentos',
+      custom: '✦ Framework Personalizado'
+    };
+
+    const sprintDatabase = [
       {
-        keys: ['influenciador', 'influenciadores', 'creator', 'creators', 'celebridade', 'parcerias'],
-        answer: 'Na categoria de IA, os concorrentes adotaram estratégias bem distintas de influenciadores:<br>• **Meta AI:** Focou 100% em **micro/macro creators de lifestyle, culinária e rotina familiar** (evitou intencionalmente criadores tech para mostrar facilidade no WhatsApp).<br>• **Microsoft Copilot:** Priorizou **LinkedIn Top Voices, designers e líderes B2B** demonstrando ganho de produtividade no Office.<br>• **Apple Intelligence:** Usou **atores e comediantes renomados** em esquetes de TV.<br>• **ChatGPT:** Focou em creators do **StudyTok e ambiente acadêmico** para o Search.',
-        m1: '4 Abordagens',
-        m2: 'Lifestyle lidera',
-        m3: 'Humor & Cotidiano',
-        lbl1: 'Estratégias Mapeadas',
-        lbl2: 'Perfil mais Ativado',
-        lbl3: 'Tom Geral',
-        filterComp: 'all',
-        filterMedia: 'all'
+        keys: ['dola', 'mexico'],
+        answer: '<strong>Dola no México (Ameaça Crítica):</strong><br>• <strong>O que é:</strong> Bot de WhatsApp que virou febre no México para organizar agendas e lembretes apenas enviando áudios em espanhol.<br>• <strong>Impacto:</strong> O usuário sincroniza com o Google Calendar sem nunca abrir o app do Google.<br>• <strong>Implicação p/ Gemini:</strong> Provar que o Gemini no celular organiza a vida com a mesma facilidade via voz no Android.',
+        m1: 'Agenda no WhatsApp',
+        m2: '🇲🇽 México',
+        m3: 'Foco em Voz no Zap',
+        lbl1: 'Pilar',
+        lbl2: 'País',
+        lbl3: 'Ponto de Atenção',
+        filterComp: 'Dola'
       },
       {
-        keys: ['frequencia', 'cadencia', 'quantos posts', 'grok', 'instagram'],
-        answer: 'Análise de cadência do **Grok no Instagram**:<br>• **Volume Trimestral:** 14 posts oficiais publicados nos últimos 3 meses.<br>• **Frequência Média:** 1,2 posts por semana, com forte concentração às terças e quintas-feiras.<br>• **Pico Recente:** 6 posts na última quinzena, todos com carrosséis visuais destacando geração de imagens sem censura e sátiras pop.',
-        m1: '14 Posts',
-        m2: '1,2 / semana',
-        m3: 'Terças e Quintas',
-        lbl1: 'Volume (3 meses)',
-        lbl2: 'Frequência Média',
-        lbl3: 'Pico de Publicação',
-        filterComp: 'Grok',
-        filterMedia: 'Instagram'
+        keys: ['meta', 'muse'],
+        answer: '<strong>Meta / Muse (A Transição para Agentes):</strong><br>• <strong>O que é:</strong> O agente da Meta lançado para executar tarefas em segundo plano (reservas, compras e e-mails) no WhatsApp e Instagram com o mascote Jolly.<br>• <strong>Implicação p/ Gemini:</strong> Meta está passando da IA que "fala" para a IA que "faz". Gemini precisa acelerar a narrativa de integração prática no ecossistema Google.',
+        m1: 'Agentes Autônomos',
+        m2: '🇧🇷 Brasil & LATAM',
+        m3: 'Automação no Zap',
+        lbl1: 'Pilar',
+        lbl2: 'Região',
+        lbl3: 'Ponto de Atenção',
+        filterComp: 'Meta'
       },
       {
-        keys: ['meta', 'brasil', 'whatsapp', 'foco'],
-        answer: 'A comunicação da **Meta AI no Brasil** é 85% focada no **WhatsApp como assistente sem download**. A estratégia elimina discussões sobre parâmetros de modelos e foca em conveniência cotidiana: receitas, figurinhas e dúvidas rápidas em família.',
-        m1: '85%',
-        m2: 'Zero Fricção',
-        m3: 'WhatsApp Nativo',
-        lbl1: 'Foco no Zap',
-        lbl2: 'Argumento Central',
-        lbl3: 'Território Dominante',
-        filterComp: 'Meta AI',
-        filterMedia: 'all'
+        keys: ['implicacoes', 'implicacao', 'imply'],
+        answer: '<strong>O que isso implica para o Google Gemini na LATAM:</strong><br>1. <strong>Bloqueio no WhatsApp:</strong> Meta e Dola estão criando o hábito diário de IA no Zap antes do Gemini.<br>2. <strong>Defesa do Search:</strong> ChatGPT Search está tentando fazer a busca tradicional parecer antiquada para universitários.<br>3. <strong>Oportunidade:</strong> Gemini é nativo no Android de bilhões de latinos e no Workspace. A comunicação precisa destacar utilidade real no dia a dia.',
+        m1: '3 Implicações Centrais',
+        m2: 'LATAM Geral',
+        m3: 'Acelerar Utilidade Diária',
+        lbl1: 'Síntese',
+        lbl2: 'Escopo',
+        lbl3: 'Prioridade',
+        filterComp: 'all'
       },
       {
-        keys: ['copilot', 'tv', 'comercial', 'comerciais', 'video', 'filmes'],
-        answer: 'A **Microsoft** colocou no ar **5 grandes campanhas de vídeo para o Copilot** no último período, adaptando versões em espanhol e português para a LATAM. O mote é *"An Idea is Just An Idea"* (transformar ideias soltas em documentos e planilhas reais).',
-        m1: '5 Filmes',
-        m2: 'TV + YouTube',
-        m3: 'Produtividade B2B',
-        lbl1: 'Campanhas de Vídeo',
-        lbl2: 'Canais Chave',
-        lbl3: 'Território Dominante',
-        filterComp: 'Copilot',
-        filterMedia: 'YouTube'
+        keys: ['influenciador', 'influenciadores', 'social', 'influx'],
+        answer: '<strong>Cenário de Influenciadores e Social na Região:</strong><br>• <strong>Meta:</strong> Focou 100% em creators de culinária e maternidade no Brasil e México para normalizar o uso no WhatsApp.<br>• <strong>Copilot:</strong> Foco em Top Voices corporativos no LinkedIn.<br>• <strong>ChatGPT:</strong> Parcerias com creators acadêmicos e StudyTok.<br>• <strong>Dola MX:</strong> TikTokers de rotina e PMEs demonstrando agendamento por áudio.',
+        m1: 'Creators Lifestyle',
+        m2: 'Brasil & México',
+        m3: 'Humanizar Uso Prático',
+        lbl1: 'Perfil Mais Ativo',
+        lbl2: 'Foco Geográfico',
+        lbl3: 'Recomendação Gemini',
+        filterComp: 'all'
       }
     ];
 
@@ -1044,7 +1024,9 @@
         return;
       }
 
-      let match = anacomDatabase.find(item => item.keys.some(k => q.includes(k)));
+      currentFmTitle.innerText = frameworks[appState.framework] || '✦ Análise Estratégica';
+
+      let match = sprintDatabase.find(item => item.keys.some(k => q.includes(k)));
 
       if (match) {
         copilotBox.style.display = 'block';
@@ -1064,13 +1046,14 @@
         }
       } else {
         copilotBox.style.display = 'block';
-        copilotText.innerHTML = `Identificamos registros relevantes para o termo <strong>"${omniInput.value}"</strong> na base de inteligência competitiva. Os criativos correspondentes foram filtrados nos cards abaixo para visualização rápida da ficha técnica e canais.`;
+        let customNotice = appState.customFrameworkText ? `<br><br><strong>Estrutura Aplicada:</strong><br>${appState.customFrameworkText.replace(/\n/g, '<br>')}` : '';
+        copilotText.innerHTML = `Analisando registros sob o <strong>${frameworks[appState.framework]}</strong> para "${omniInput.value}". Os criativos correspondentes foram filtrados nos cards abaixo.${customNotice}`;
         metric1.innerText = 'Filtro Ativo';
-        metric2.innerText = 'Tempo Real';
-        metric3.innerText = 'Multicanal';
+        metric2.innerText = 'LATAM';
+        metric3.innerText = 'Pre-read Sprint';
         metricLbl1.innerText = 'Status';
-        metricLbl2.innerText = 'Base';
-        metricLbl3.innerText = 'Cobertura';
+        metricLbl2.innerText = 'Escopo';
+        metricLbl3.innerText = 'Uso';
       }
 
       filterCards();
@@ -1080,20 +1063,53 @@
       cards.forEach(card => {
         const cComp = card.getAttribute('data-competitor');
         const cMedia = card.getAttribute('data-media');
+        const cCountry = card.getAttribute('data-country');
         const cText = (card.getAttribute('data-text') + ' ' + card.innerText).toLowerCase();
 
         const matchComp = (appState.competitor === 'all' || cComp === appState.competitor);
         const matchMedia = (appState.media === 'all' || cMedia === appState.media);
+        const matchCountry = (appState.country === 'all' || cCountry.includes(appState.country));
         
         const s = appState.search.toLowerCase().trim();
         const searchWords = s.split(' ').filter(w => w.length > 2);
         const matchSearch = (!s || searchWords.some(w => cText.includes(w)) || cText.includes(s));
 
-        if (matchComp && matchMedia && matchSearch) {
+        if (matchComp && matchMedia && matchCountry && matchSearch) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
+      });
+    }
+
+    // Framework dropdown change
+    if (frameworkSelect) {
+      frameworkSelect.addEventListener('change', (e) => {
+        const val = e.target.value;
+        appState.framework = val;
+        if (val === 'custom') {
+          customFmModal.style.display = 'flex';
+          customFmInput.value = appState.customFrameworkText;
+        } else {
+          showToast(`Aplicado: ${frameworks[val]}`);
+        }
+      });
+    }
+
+    // Custom Framework modal events
+    if (btnCloseFmModal) {
+      btnCloseFmModal.addEventListener('click', () => {
+        customFmModal.style.display = 'none';
+      });
+    }
+    if (btnSaveCustomFm) {
+      btnSaveCustomFm.addEventListener('click', () => {
+        const val = customFmInput.value.trim();
+        appState.customFrameworkText = val;
+        localStorage.setItem('gemini_custom_fm', val);
+        customFmModal.style.display = 'none';
+        showToast('✏️ Framework personalizado salvo na tela!');
+        if (omniInput.value) executeAnalysis();
       });
     }
 
@@ -1102,12 +1118,11 @@
     }
     if (omniInput) {
       omniInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          executeAnalysis();
-        }
+        if (e.key === 'Enter') executeAnalysis();
       });
     }
 
+    // Quick chips
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const query = chip.getAttribute('data-query');
@@ -1116,6 +1131,7 @@
       });
     });
 
+    // Competitor tabs
     document.querySelectorAll('#competitorTabs .tab-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.remove('active'));
@@ -1125,6 +1141,7 @@
       });
     });
 
+    // Media pills
     document.querySelectorAll('#mediaPills .media-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.remove('active'));
@@ -1134,78 +1151,35 @@
       });
     });
 
-    const btnNavRadar = document.getElementById('btnNavRadar');
-    const btnNavMetrics = document.getElementById('btnNavMetrics');
-    const btnNavSources = document.getElementById('btnNavSources');
-    const btnLogoHome = document.getElementById('btnLogoHome');
-    const btnCloseModal = document.getElementById('btnCloseModal');
-
-    function resetSidebarActive() {
-      document.querySelectorAll('.gemini-sidebar .side-icon').forEach(i => i.classList.remove('active'));
-    }
-
-    if (btnNavRadar || btnLogoHome) {
-      const goHome = () => {
-        resetSidebarActive();
-        if (btnNavRadar) btnNavRadar.classList.add('active');
-        metricsModal.style.display = 'none';
-        appState.competitor = 'all';
-        appState.media = 'all';
-        appState.search = '';
-        if (omniInput) omniInput.value = '';
-        copilotBox.style.display = 'none';
-        document.querySelectorAll('#competitorTabs .tab-item').forEach(b => b.classList.toggle('active', b.getAttribute('data-competitor') === 'all'));
-        document.querySelectorAll('#mediaPills .media-pill').forEach(b => b.classList.toggle('active', b.getAttribute('data-media') === 'all'));
+    // Country pills
+    document.querySelectorAll('#regionFilters .region-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#regionFilters .region-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        appState.country = btn.getAttribute('data-country');
         filterCards();
-        showToast('✦ Feed principal redefinido');
-      };
-      if (btnNavRadar) btnNavRadar.addEventListener('click', goHome);
-      if (btnLogoHome) btnLogoHome.addEventListener('click', goHome);
-    }
-
-    if (btnNavMetrics) {
-      btnNavMetrics.addEventListener('click', () => {
-        resetSidebarActive();
-        btnNavMetrics.classList.add('active');
-        metricsModal.style.display = 'flex';
       });
-    }
+    });
 
-    if (btnCloseModal) {
-      btnCloseModal.addEventListener('click', () => {
-        metricsModal.style.display = 'none';
-        if (btnNavRadar) {
-          resetSidebarActive();
-          btnNavRadar.classList.add('active');
-        }
-      });
-    }
-
-    if (btnNavSources) {
-      btnNavSources.addEventListener('click', () => {
-        resetSidebarActive();
-        btnNavSources.classList.add('active');
-        showToast('▦ Fontes ativas: The Drum, Ad Age, M&M, B9, Meta Ads, YouTube e X');
-      });
-    }
-
+    // Slide copy
     document.querySelectorAll('.btn-slide-copy').forEach(btn => {
       btn.addEventListener('click', () => {
         const title = btn.getAttribute('data-title');
         const insight = btn.getAttribute('data-insight');
-        const slideText = `[ANACOM - MOVIMENTAÇÃO CONCORRENTE]\n• Campanha: ${title}\n• Análise: ${insight}\n• Fonte: Google Gemini Competitive Radar`;
+        const slideText = `[SPRINT GEMINI - PRE-READ]\n• Competitor & Move: ${title}\n• Strategic Insight: ${insight}\n• Framework: ${frameworks[appState.framework]}`;
         navigator.clipboard.writeText(slideText).then(() => {
           showToast('📋 Copiado para colar no Google Slides!');
         });
       });
     });
 
+    // Export Full Presentation Structure
     const btnExport = document.getElementById('btnExportReport');
     if (btnExport) {
       btnExport.addEventListener('click', () => {
-        const report = `=================================================\nRADAR DE CONCORRÊNCIA // GOOGLE GEMINI LATAM\nRelatório Semanal de Análise de Comunicação\n=================================================\n\n1. RESUMO EXECUTIVO:\n• Meta AI segue com maior pressão de hábito diário no Brasil, focando 85% em WhatsApp.\n• Microsoft Copilot lidera investimentos em mídia de TV e B2B no LinkedIn.\n• Grok mantém cadência de 1,2 posts/semana com foco em geração de imagem sem censura.\n• OpenAI foca em parcerias acadêmicas com o ChatGPT Search.\n\n2. RECOMENDAÇÃO ESTRATÉGICA P/ GEMINI:\n• Acelerar comunicação sobre facilidade e integração nativa no Android e Workspace.\n• Explorar creators além do nicho de tecnologia para disputar o território de utilidade da Meta.\n\nGerado automaticamente via Radar Gemini FBiz.`;
-        navigator.clipboard.writeText(report).then(() => {
-          showToast('📥 Resumo executivo copiado para o seu clipboard!');
+        const structure = `==========================================================\nGOOGLE GEMINI SPRINT // LATAM COMPETITIVE PRE-READ\nFramework: Previous Mapping | What Changed | Implications\n==========================================================\n\n1. PREVIOUS MAPPING:\n• ChatGPT: Brand awareness leader & generic category name.\n• Claude: Technical niche for coding and deep research.\n• Meta AI: Everyday presence embedded in WhatsApp.\n• Copilot: Dominant in enterprise/workplace.\n• Dola (MX): Viral WhatsApp calendar assistant in Mexico.\n\n2. WHAT HAS CHANGED:\n• Meta launched Muse: Shift from chatbots to agentic task execution.\n• ChatGPT Search attacking Google core search with students.\n• Dola proved Latam users prefer voice notes over calendar apps.\n• Claude gained dev community mindshare with Artifacts.\n\n3. WHAT DOES IT IMPLY FOR GEMINI:\n• Defend WhatsApp / Mobile habit with native Android integration.\n• Protect Google Workspace & Calendar utility.\n• Win the Search war by proving Gemini is real-time and grounded.\n\n4. NOTABLE EXECUTIONS PER COUNTRY:\n• BR: Meta mass lifestyle creator campaign for WhatsApp.\n• MX: Dola viral TikTok & WhatsApp audio scheduling.\n\n5. OPPORTUNITIES & THREATS:\n• Threat: WhatsApp habit lock-in.\n• Opportunity: Android default reach & multimodal camera utility.`;
+        navigator.clipboard.writeText(structure).then(() => {
+          showToast('📥 Estrutura completa copiada para o Google Slides!');
         });
       });
     }
